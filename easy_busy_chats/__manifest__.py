@@ -36,7 +36,7 @@ Getting started
 4. Open the **Chats** menu and start working with linked conversations.
     """,
     'author': 'EasyBusyLLC',
-    'license': 'MIT',
+    'license': 'LGPL-3',
     'website': 'https://easy-busy.chat',
     'depends': ['base_setup'],
     'data': [

@@ -24,7 +24,7 @@ Dependencies
 * ``crm``
     """,
     'author': 'EasyBusyLLC',
-    'license': 'MIT',
+    'license': 'LGPL-3',
     'website': 'https://easy-busy.chat',
     'depends': ['easy_busy_chats', 'crm'],
     'data': [
