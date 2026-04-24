@@ -37,7 +37,7 @@ According to EasyBusy positioning, the goal — “all chats in one window” an
 
 ## Requirements
 
-- Odoo 17.0
+- Odoo 18.0
 - Internet connection
 - EasyBusy account
 
@@ -49,7 +49,6 @@ According to EasyBusy positioning, the goal — “all chats in one window” an
 2. Place the module in your Odoo addons folder
 3. Update Apps list
 4. Install **EasyBusy Chats**
-5. (Optional) Install **EasyBusy Chats CRM**
 
 ---
 
