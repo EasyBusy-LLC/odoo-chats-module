@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="easy_busy_chats.action_chats" model="ir.actions.client">
+            <field name="name">Chats</field>
+            <field name="tag">easy_busy_chats.action_chats</field>
+        </record>
+
+        <menuitem name="Chats" 
+            web_icon="easy_busy_chats,static/description/icon.png"
+            id="easy_busy_chats.menu_root_discuss"
+            action="easy_busy_chats.action_chats" 
+            groups="easy_busy_chats.group_easy_busy_chats_user" sequence="6" />
+
+    </data>
+</odoo>
