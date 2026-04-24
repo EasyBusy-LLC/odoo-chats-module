@@ -72,6 +72,26 @@ EasyBusy operates as a SaaS platform, and some features may require a paid subsc
 
 ---
 
+## Use Case
+
+- Capture website visitors instantly
+- Convert chats into leads in CRM
+- Never lose customer messages
+
+---
+
+## Why EasyBusy
+
+- All chats in one place
+- Works out-of-the-box with Odoo
+- No complex setup required
+
+## Demo registration is available for a 14 days for testing
+
+https://easy-busy.chat/
+
+---
+
 ## License
 
 This module is licensed under the MIT License.
