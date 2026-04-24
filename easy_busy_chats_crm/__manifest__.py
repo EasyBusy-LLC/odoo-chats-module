@@ -3,6 +3,7 @@
     'version': '17.0.1.3.0',
     'category': 'Sales/CRM',
     'summary': 'Create and merge CRM opportunities directly from EasyBusy chats.',
+    'images': ['static/description/banner.png'],
     'description': """
 EasyBusy Chats CRM
 ==================
