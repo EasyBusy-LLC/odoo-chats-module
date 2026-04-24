@@ -1,6 +1,6 @@
 {
     'name': 'EasyBusy Chats',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.3.0',
     'category': 'Services/Chats',
     'summary': 'Unified messenger inbox in Odoo with contact linking and chat history.',
     'description': """

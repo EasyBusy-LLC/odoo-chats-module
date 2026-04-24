@@ -1,6 +1,6 @@
 {
     'name': 'EasyBusy Chats CRM',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.3.0',
     'category': 'Sales/CRM',
     'summary': 'Create and merge CRM opportunities directly from EasyBusy chats.',
     'description': """
