@@ -10,7 +10,7 @@ EasyBusy Chats allows you to connect your Odoo instance with the EasyBusy SaaS p
 
 All chats, leads, and interactions are centralized, helping you respond faster and never lose potential customers.
 
-According to EasyBusy positioning, the goal — “all chats in one window” and instant replies with no lost leads. :contentReference[oaicite:0]{index=0}
+According to EasyBusy positioning, the goal — “all chats in one window” and instant replies with no lost leads.
 
 ---
 
