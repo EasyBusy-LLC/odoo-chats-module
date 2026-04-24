@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_easy_busy_link_contact_form" model="ir.ui.view">
+        <field name="name">easy.busy.link.contact.form</field>
+        <field name="model">easy.busy.link.contact</field>
+        <field name="arch" type="xml">
+            <form string="Link Existing Contact">
+                <group>
+                    <field name="partner_id"
+                           widget="res_partner_many2one"
+                           context="{'res_partner_search_mode': 'customer', 'show_vat': True}"/>
+                </group>
+                <footer>
+                    <button name="action_link_contact" string="Link Contact" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_easy_busy_link_contact" model="ir.actions.act_window">
+        <field name="name">Link Contact</field>
+        <field name="res_model">easy.busy.link.contact</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_easy_busy_link_contact_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

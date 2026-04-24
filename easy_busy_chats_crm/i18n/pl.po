@@ -1,0 +1,210 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* easy_busy_chats_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-23 18:10+0000\n"
+"PO-Revision-Date: 2026-04-23 18:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Assign this opportunity to"
+msgstr "Przypisz tę szansę do"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Cancel"
+msgstr "Anuluj"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__name
+msgid "Chat Title"
+msgstr "Tytuł szansy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__contact_email
+msgid "Contact Email"
+msgstr "E-mail kontaktowy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__contact_phone
+msgid "Contact Phone"
+msgstr "Telefon kontaktowy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__conversion_action
+msgid "Conversion Action"
+msgstr "Akcja konwersji"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Convert to Opportunity"
+msgstr "Konwertuj do szansy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__conversion_action__convert
+msgid "Convert to opportunity"
+msgstr "Konwertuj do szansy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.actions.act_window,name:easy_busy_chats_crm.action_easy_busy_create_opportunity
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Create Opportunity"
+msgstr "Utwórz szansę"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model,name:easy_busy_chats_crm.model_easy_busy_create_opportunity
+msgid "Create Opportunity from EasyBusy Chat"
+msgstr "Utwórz szansę z czatu EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__create
+msgid "Create a new customer"
+msgstr "Utwórz nowego klienta"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__create_uid
+msgid "Created by"
+msgstr "Utworzył(a)"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Created from EasyBusy chat"
+msgstr "Utworzono z czatu EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__create_date
+msgid "Created on"
+msgstr "Data utworzenia"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__customer_action
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__partner_id
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Customer"
+msgstr "Klient"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__new_partner_name
+msgid "Customer Name"
+msgstr "Nazwa klienta"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__display_name
+msgid "Display Name"
+msgstr "Nazwa wyświetlana"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__nothing
+msgid "Do not link to a customer"
+msgstr "Nie łącz z klientem"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__chat_link_id
+msgid "Easy Busy Chat Link"
+msgstr "Połączenie czatu Easy Busy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model,name:easy_busy_chats_crm.model_easy_busy_chats
+msgid "Easy Busy Chats"
+msgstr "Czaty Easy Busy"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "EasyBusy Opportunity"
+msgstr "Szansa EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__id
+msgid "ID"
+msgstr "ID"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__description
+msgid "Internal Notes"
+msgstr "Notatki wewnętrzne"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__write_uid
+msgid "Last Updated by"
+msgstr "Ostatnio aktualizowane przez"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__write_date
+msgid "Last Updated on"
+msgstr "Data ostatniej aktualizacji"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__exist
+msgid "Link to an existing customer"
+msgstr "Odnośnik do istniejącego klienta"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__conversion_action__merge
+msgid "Merge with existing opportunities"
+msgstr "Połącz z istniejącymi szansami."
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__duplicated_lead_ids
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Opportunities"
+msgstr "Szanse"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Opportunity Details"
+msgstr "Szczegóły szansy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__opportunity_name
+msgid "Opportunity Title"
+msgstr "Tytuł szansy"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Optional notes for the salesperson"
+msgstr "Opcjonalne notatki dla handlowca"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Please choose a customer to link the opportunity to."
+msgstr "Wybierz klienta, z którym chcesz powiązać szansę."
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Please provide the name of the customer to create."
+msgstr "Podaj nazwę klienta do utworzenia."
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__team_id
+msgid "Sales Team"
+msgstr "Zespół sprzedaży"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__user_id
+msgid "Salesperson"
+msgstr "Sprzedawca"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Select at least two opportunities to merge."
+msgstr "Wybierz co najmniej dwie szanse do połączenia."

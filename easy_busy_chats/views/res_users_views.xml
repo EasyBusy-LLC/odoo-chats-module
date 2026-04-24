@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_users_form_easy_busy_chats_dialog" model="ir.ui.view">
+        <field name="name">res.users.form.easy_busy_chats.dialog</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form string="Easy Busy Chats Settings" create="0" delete="0">
+                <sheet>
+                    <group name="easy_busy_chats_settings">
+                        <group>
+                            <field name="easy_busy_access_token"
+                                   widget="easy_busy_token"
+                                   password="True"
+                                   placeholder="Paste your Easy Busy access token"/>
+                            <div colspan="2">
+                                <button name="action_easy_busy_get_token"
+                                        type="object"
+                                        string="Get Token"
+                                        class="btn-link p-0"
+                                        icon="fa-external-link"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="easy_busy_company_id"
+                                   placeholder="Add a token to populate companies"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_users_form_easy_busy_chats" model="ir.ui.view">
+        <field name="name">res.users.form.easy_busy_chats</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Easy Busy Chats"
+                      name="easy_busy_chats"
+                      groups="easy_busy_chats.group_easy_busy_chats_user">
+                    <group name="easy_busy_chats_settings">
+                        <group>
+                            <field name="easy_busy_access_token"
+                                   widget="easy_busy_token"
+                                   password="True"
+                                   placeholder="Paste your Easy Busy access token"/>
+                            <div colspan="2">
+                                <button name="action_easy_busy_get_token"
+                                        type="object"
+                                        string="Get Token"
+                                        class="btn-link p-0"
+                                        icon="fa-external-link"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="easy_busy_company_id"
+                                   placeholder="Add a token to populate companies"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_users_form_simple_modify_easy_busy_chats" model="ir.ui.view">
+        <field name="name">res.users.preferences.form.easy_busy_chats</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Easy Busy Chats"
+                      name="easy_busy_chats"
+                      groups="easy_busy_chats.group_easy_busy_chats_user">
+                    <group name="easy_busy_chats_preferences">
+                        <group>
+                            <field name="easy_busy_access_token"
+                                   widget="easy_busy_token"
+                                   password="True"
+                                   placeholder="Paste your Easy Busy access token"
+                                   readonly="0"/>
+                            <div colspan="2">
+                                <button name="action_easy_busy_get_token"
+                                        type="object"
+                                        string="Get Token"
+                                        class="btn-link p-0"
+                                        icon="fa-external-link"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="easy_busy_company_id"
+                                   placeholder="Add a token to populate companies"
+                                   readonly="0"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

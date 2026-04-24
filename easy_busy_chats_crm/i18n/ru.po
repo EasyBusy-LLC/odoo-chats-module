@@ -1,0 +1,210 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* easy_busy_chats_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-23 18:11+0000\n"
+"PO-Revision-Date: 2026-04-23 18:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Assign this opportunity to"
+msgstr "Назначить эту сделку"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Cancel"
+msgstr "Отмена"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__name
+msgid "Chat Title"
+msgstr "Название сделки"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__contact_email
+msgid "Contact Email"
+msgstr "Электронная почта контакта"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__contact_phone
+msgid "Contact Phone"
+msgstr "Телефон контакта"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__conversion_action
+msgid "Conversion Action"
+msgstr "Действие конверсии"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Convert to Opportunity"
+msgstr "Конвертировать в сделку"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__conversion_action__convert
+msgid "Convert to opportunity"
+msgstr "Конвертировать в сделку"
+
+#. module: easy_busy_chats_crm
+#: model:ir.actions.act_window,name:easy_busy_chats_crm.action_easy_busy_create_opportunity
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Create Opportunity"
+msgstr "Создать сделку"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model,name:easy_busy_chats_crm.model_easy_busy_create_opportunity
+msgid "Create Opportunity from EasyBusy Chat"
+msgstr "Создать сделку из EasyBusy Chat"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__create
+msgid "Create a new customer"
+msgstr "Создать нового клиента"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Created from EasyBusy chat"
+msgstr "Создано из чата EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__create_date
+msgid "Created on"
+msgstr "Дата создания"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__customer_action
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__partner_id
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Customer"
+msgstr "Клиент"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__new_partner_name
+msgid "Customer Name"
+msgstr "Имя клиента"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__display_name
+msgid "Display Name"
+msgstr "Отображаемое имя"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__nothing
+msgid "Do not link to a customer"
+msgstr "Не связывать с клиентом"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__chat_link_id
+msgid "Easy Busy Chat Link"
+msgstr "Связь Easy Busy с чатом"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model,name:easy_busy_chats_crm.model_easy_busy_chats
+msgid "Easy Busy Chats"
+msgstr "Easy Busy Чаты"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "EasyBusy Opportunity"
+msgstr "Сделка EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__id
+msgid "ID"
+msgstr "ID"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__description
+msgid "Internal Notes"
+msgstr "Внутренние заметки"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__write_uid
+msgid "Last Updated by"
+msgstr "Кем обновлено"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__write_date
+msgid "Last Updated on"
+msgstr "Дата обновления"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__exist
+msgid "Link to an existing customer"
+msgstr "Привязать к существующему клиенту"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__conversion_action__merge
+msgid "Merge with existing opportunities"
+msgstr "Объединить с существующими сделками"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__duplicated_lead_ids
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Opportunities"
+msgstr "Сделки"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Opportunity Details"
+msgstr "Детали сделки"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__opportunity_name
+msgid "Opportunity Title"
+msgstr "Название сделки"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Optional notes for the salesperson"
+msgstr "Необязательные заметки для менеджера"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Please choose a customer to link the opportunity to."
+msgstr "Выберите клиента, с которым связать эту сделку."
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Please provide the name of the customer to create."
+msgstr "Укажите имя создаваемого клиента."
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__team_id
+msgid "Sales Team"
+msgstr "Отдел продаж"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__user_id
+msgid "Salesperson"
+msgstr "Менеджер по продажам"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Select at least two opportunities to merge."
+msgstr "Выберите как минимум две сделки для объединения."

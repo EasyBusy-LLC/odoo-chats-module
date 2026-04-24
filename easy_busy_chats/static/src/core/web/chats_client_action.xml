@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="easy_busy_chats.ChatsClientAction">
+        <div id="chat_container_holder_text">Loading...</div>
+        <div id="chat_container">
+           <div id="chat_container_holder">  
+           </div> 
+        </div> 
+    </t>
+
+</templates>

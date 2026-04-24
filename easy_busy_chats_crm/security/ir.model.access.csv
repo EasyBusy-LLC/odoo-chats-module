@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_easy_busy_create_opportunity_wizard,easy_busy_create_opportunity.wizard,model_easy_busy_create_opportunity,easy_busy_chats.group_easy_busy_chats_user,1,1,1,0
