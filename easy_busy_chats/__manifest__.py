@@ -3,6 +3,7 @@
     'version': '17.0.1.3.0',
     'category': 'Services/Chats',
     'summary': 'Unified messenger inbox in Odoo with contact linking and chat history.',
+    'keywords': ['telegram', 'instagram', 'whatsapp', 'viber', 'webchat', 'messenger', 'facebook'],
     'images': ['static/description/banner.png'],
     'description': """
 EasyBusy Chats for Odoo
