@@ -3,6 +3,7 @@
     'version': '18.0.1.3.0',
     'category': 'Sales/CRM',
     'summary': 'Create and merge CRM opportunities directly from EasyBusy chats.',
+    'keywords': ['telegram', 'instagram', 'whatsapp', 'viber', 'webchat', 'messenger', 'facebook'],
     'images': ['static/description/banner.png'],
     'description': """
 EasyBusy Chats CRM
