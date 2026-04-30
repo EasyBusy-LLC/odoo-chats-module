@@ -1,0 +1,210 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* easy_busy_chats_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-23 18:12+0000\n"
+"PO-Revision-Date: 2026-04-23 18:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Assign this opportunity to"
+msgstr "Призначити цю угоду"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__name
+msgid "Chat Title"
+msgstr "Назва угоди"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__contact_email
+msgid "Contact Email"
+msgstr "Електронна пошта контакту"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__contact_phone
+msgid "Contact Phone"
+msgstr "Телефон контакту"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__conversion_action
+msgid "Conversion Action"
+msgstr "Дія конверсії"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Convert to Opportunity"
+msgstr "Конвертувати в угоду"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__conversion_action__convert
+msgid "Convert to opportunity"
+msgstr "Конвертувати в угоду"
+
+#. module: easy_busy_chats_crm
+#: model:ir.actions.act_window,name:easy_busy_chats_crm.action_easy_busy_create_opportunity
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Create Opportunity"
+msgstr "Створити угоду"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model,name:easy_busy_chats_crm.model_easy_busy_create_opportunity
+msgid "Create Opportunity from EasyBusy Chat"
+msgstr "Створити угоду з EasyBusy Chat"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__create
+msgid "Create a new customer"
+msgstr "Створити нового клієнта"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__create_uid
+msgid "Created by"
+msgstr "Створено"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Created from EasyBusy chat"
+msgstr "Створено з чату EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__create_date
+msgid "Created on"
+msgstr "Дата створення"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__customer_action
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__partner_id
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Customer"
+msgstr "Клієнт"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__new_partner_name
+msgid "Customer Name"
+msgstr "Ім'я клієнта"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__display_name
+msgid "Display Name"
+msgstr "Відображуване ім'я"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__nothing
+msgid "Do not link to a customer"
+msgstr "Не пов'язувати з клієнтом"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__chat_link_id
+msgid "Easy Busy Chat Link"
+msgstr "Зв'язок Easy Busy з чатом"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model,name:easy_busy_chats_crm.model_easy_busy_chats
+msgid "Easy Busy Chats"
+msgstr "Easy Busy Чати"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "EasyBusy Opportunity"
+msgstr "Угода EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__id
+msgid "ID"
+msgstr "ID"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__description
+msgid "Internal Notes"
+msgstr "Внутрішні нотатки"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__write_uid
+msgid "Last Updated by"
+msgstr "Ким оновлено"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__write_date
+msgid "Last Updated on"
+msgstr "Дата оновлення"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__exist
+msgid "Link to an existing customer"
+msgstr "Прив'язати до наявного клієнта"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__conversion_action__merge
+msgid "Merge with existing opportunities"
+msgstr "Об'єднати з наявними угодами"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__duplicated_lead_ids
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Opportunities"
+msgstr "Угоди"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Opportunity Details"
+msgstr "Деталі угоди"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__opportunity_name
+msgid "Opportunity Title"
+msgstr "Назва угоди"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Optional notes for the salesperson"
+msgstr "Необов'язкові нотатки для менеджера"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Please choose a customer to link the opportunity to."
+msgstr "Оберіть клієнта, з яким потрібно пов'язати угоду."
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Please provide the name of the customer to create."
+msgstr "Укажіть ім'я клієнта, якого потрібно створити."
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__team_id
+msgid "Sales Team"
+msgstr "Відділ продажу"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__user_id
+msgid "Salesperson"
+msgstr "Менеджер з продажу"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Select at least two opportunities to merge."
+msgstr "Виберіть щонайменше дві угоди для об'єднання."

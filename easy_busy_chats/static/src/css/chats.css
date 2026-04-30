@@ -1,0 +1,65 @@
+#chat_container,
+#chat_container_holder,
+.easy-busy-chats-plugin {
+  height: 100%;
+}
+[id*="radix"].grid, 
+[id*="radix"] .grid, 
+.easy-busy-chats-plugin .grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: initial;
+}
+.easy-busy-chats-plugin {
+  position: relative;
+}
+.easy-busy-chats-plugin > *:not(.ui-protected) {
+  position: absolute !important;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.easy-busy-chats-plugin .h-\[calc\(100dvh-60px\)\] {
+  height: calc(100% - 60px) !important;
+}
+
+#chat_container_holder_text{
+  padding: 30px
+}
+
+.o_easy_busy_chats_message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.o_easy_busy_chats_message_title,
+.o_easy_busy_chats_message_description {
+  margin: 0;
+}
+
+.o_easy_busy_chats_message_title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.o_easy_busy_chats_message_description {
+  color: var(--body-color, #495057);
+}
+
+.o_easy_busy_chats_tree td {
+  vertical-align: middle;
+}
+
+.o_easy_busy_chats_tree .oe_easy_busy_chat_redirect {
+  text-align: center;
+}
+
+.o_easy_busy_chats_tree .oe_easy_busy_chat_redirect .btn {
+  margin: 0 auto;
+}

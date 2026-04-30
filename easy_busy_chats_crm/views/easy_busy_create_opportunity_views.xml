@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_easy_busy_create_opportunity_form" model="ir.ui.view">
+        <field name="name">easy.busy.create.opportunity.form</field>
+        <field name="model">easy.busy.create.opportunity</field>
+        <field name="arch" type="xml">
+            <form string="Convert to Opportunity">
+                <field name="chat_link_id" invisible="1"/>
+                <group>
+                    <field name="conversion_action" widget="radio"/>
+                </group>
+
+                <group string="Assign this opportunity to">
+                    <field name="user_id" domain="[('share', '=', False)]"/>
+                    <field name="team_id" options="{'no_open': True, 'no_create': True}" context="{'kanban_view_ref': 'sales_team.crm_team_view_kanban'}"/>
+                </group>
+
+                <group string="Opportunities" invisible="conversion_action != 'merge'">
+                    <field name="duplicated_lead_ids" colspan="2" nolabel="1">
+                        <list>
+                            <field name="create_date" widget="date"/>
+                            <field name="name"/>
+                            <field name="type"/>
+                            <field name="contact_name"/>
+                            <field name="country_id" column_invisible="context.get('invisible_country', True)" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="email_from"/>
+                            <field name="stage_id"/>
+                            <field name="user_id"/>
+                            <field name="team_id" context="{'kanban_view_ref': 'sales_team.crm_team_view_kanban'}"/>
+                        </list>
+                    </field>
+                </group>
+
+                <group string="Customer" invisible="conversion_action != 'convert'">
+                    <field name="customer_action" widget="radio"/>
+                    <field name="new_partner_name" invisible="customer_action != 'create'" required="customer_action == 'create'"/>
+                    <field name="partner_id" widget="res_partner_many2one" invisible="customer_action != 'exist'" required="customer_action == 'exist'"/>
+                    <field name="contact_phone"/>
+                    <field name="contact_email"/>
+                </group>
+
+
+                <group string="Opportunity Details" invisible="conversion_action != 'convert'">
+                    <field name="opportunity_name"/>
+                    <field name="description" placeholder="Optional notes for the salesperson"/>
+                </group>
+
+                <footer>
+                    <button name="action_confirm" type="object" string="Create Opportunity" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_easy_busy_create_opportunity" model="ir.actions.act_window">
+        <field name="name">Create Opportunity</field>
+        <field name="res_model">easy.busy.create.opportunity</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_easy_busy_create_opportunity_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_easy_busy_chats_user,easy_busy_chats.user,model_easy_busy_chats,group_easy_busy_chats_user,1,1,1,1
+access_easy_busy_chat_link_user,easy_busy_chat_link.user,model_easy_busy_chat_link,group_easy_busy_chats_user,1,1,1,1
+access_easy_busy_link_contact_wizard,easy_busy_link_contact.wizard,model_easy_busy_link_contact,group_easy_busy_chats_user,1,1,1,0
