@@ -4,7 +4,7 @@
     'category': 'Sales/CRM',
     'summary': 'Create and merge CRM opportunities directly from EasyBusy chats.',
     'keywords': ['telegram', 'instagram', 'whatsapp', 'viber', 'webchat', 'messenger', 'facebook'],
-    'images': ['static/description/banner.png'],
+    'images': ['static/description/banner.gif'],
     'description': """
 EasyBusy Chats CRM
 ==================
