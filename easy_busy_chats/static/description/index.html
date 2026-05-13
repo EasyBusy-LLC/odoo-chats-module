@@ -1,92 +1,585 @@
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">EasyBusy Chats</h2>
-        <h3 class="oe_slogan text-muted">Unified messenger conversations inside Odoo</h3>
-        <div class="oe_span12">
-            <p class="oe_mt32">
-                EasyBusy Chats adds a dedicated chat workspace to Odoo and lets users work
-                with messenger conversations without leaving the backend.
-            </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyBusy Chats — Odoo Marketplace</title>
+  <style>
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    /* ─── Container ─────────────────────────────────────────── */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Section shared ─────────────────────────────────────── */
+    .section         { padding: 40px 0; }
+    .section-white   { background: #ffffff; }
+    .section-gray    { background: #f5f7fa; }
+
+    .section-label {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      color: #0F8A75;
+      margin-bottom: 10px;
+    }
+    .section-heading {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0d1117;
+      margin-bottom: 44px;
+      line-height: 1.25;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       1. HERO
+    ════════════════════════════════════════════════════════════ */
+    .hero {
+      background: linear-gradient(140deg, #0d1117 0%, #112b26 60%, #0a1f1c 100%);
+      color: #fff;
+      padding: 64px 0 0;
+      overflow: hidden;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      gap: 52px;
+    }
+
+    .hero-left { flex: 1; }
+
+    .hero-logo { margin-bottom: 28px; }
+    .hero-logo img { height: 56px; width: auto; }
+
+    .hero-h1 {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.5px;
+    }
+    .hero-h1 span { color: #4dd9b8; }
+
+    .hero-sub {
+      margin-top: 18px;
+      font-size: 18px;
+      color: rgba(255,255,255,.72);
+      line-height: 1.6;
+      max-width: 460px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(15,138,117,.18);
+      border: 1px solid rgba(77,217,184,.35);
+      color: #4dd9b8;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .hero-right {
+      flex: 0 0 auto;
+      width: 430px;
+    }
+    .hero-right img {
+      width: 100%;
+      border-radius: 14px 14px 0 0;
+      box-shadow: 0 -4px 40px rgba(15,138,117,.3), 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .hero-preview-bar {
+      background: rgba(255,255,255,.04);
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 52px 0;
+      margin-top: 60px;
+    }
+    .hero-preview-bar img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.5);
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       2. PRODUCT DESCRIPTION
+    ════════════════════════════════════════════════════════════ */
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .screenshot-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #e4e8f0;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      background: #f5f7fa;
+    }
+    .screenshot-card img { width: 100%; }
+
+    .desc-text {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.78;
+      margin-bottom: 20px;
+    }
+
+    .perfect-for {
+      background: #f5f7fa;
+      border-radius: 12px;
+      padding: 32px 36px;
+      margin: 36px 0;
+    }
+    .perfect-for h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0d1117;
+      margin-bottom: 18px;
+    }
+    .pf-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 28px;
+      list-style: none;
+    }
+    .pf-list li {
+      font-size: 15px;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pf-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0F8A75;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px 32px;
+      margin-top: 40px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0F8A75;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-primary .arr { font-size: 18px; }
+
+    .disclaimer {
+      font-size: 12.5px;
+      color: #888;
+      line-height: 1.5;
+      max-width: 560px;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       3. BEFORE / AFTER
+    ════════════════════════════════════════════════════════════ */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .ba-label {
+      display: inline-block;
+      padding: 5px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      margin-bottom: 14px;
+    }
+    .ba-label.before { background: #fde8e8; color: #c0392b; }
+    .ba-label.after  { background: #e0f5f1; color: #0F8A75; }
+    .ba-card img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       4. KEY FEATURES
+    ════════════════════════════════════════════════════════════ */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      align-items: start;
+    }
+    .feature-card { overflow: hidden; }
+    .feature-card img { width: 100%; display: block; margin-bottom: -19.5%; }
+
+    /* ════════════════════════════════════════════════════════════
+       5. SUPPORTED CHANNELS
+    ════════════════════════════════════════════════════════════ */
+    .channels-section {
+      background: #0F8A75;
+      padding: 48px 0;
+      overflow: visible;
+    }
+    .ch-layout {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .ch-cards {
+      flex: 0 0 62%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 1px;
+      row-gap: 0;
+      position: relative;
+      align-items: start;
+    }
+    .channel-tab { overflow: hidden; aspect-ratio: 232 / 175; }
+    .channel-tab img { width: 100%; display: block; }
+    .cursor-wrap {
+      position: absolute;
+      top: 8%;
+      right: 0%;
+      width: 68px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .cursor-wrap img { width: 100%; }
+    .ch-text {
+      flex: 1;
+      color: #fff;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.3;
+      padding-left: 56px;
+    }
+    .ch-pick  { color: #FFD84D; }
+    .ch-needs { color: #FFD84D; }
+
+    /* ════════════════════════════════════════════════════════════
+       6. EXTERNAL SERVICE
+    ════════════════════════════════════════════════════════════ */
+    .ext-layout { display: flex; align-items: center; gap: 48px; }
+    .ext-graph { flex: 0 0 auto; }
+    .ext-graph img {
+      width: 50%;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    .ext-text { flex: 1; }
+    .ext-text p { font-size: 18px; color: #555; margin-bottom: 14px; line-height: 1.72; }
+    .ext-text a { color: #0F8A75; text-decoration: none; font-weight: 500; }
+
+    /* ════════════════════════════════════════════════════════════
+       7. CONFIGURATION
+    ════════════════════════════════════════════════════════════ */
+    .video-ratio {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+    }
+    .video-ratio iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       8. TECHNICAL NOTES
+    ════════════════════════════════════════════════════════════ */
+    .tech-layout { display: flex; align-items: center; gap: 48px; }
+    .tech-img { flex: 0 0 auto; }
+    .tech-img img { width: 50%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .tech-body { flex: 1; }
+    .tech-body p { font-size: 18px; color: #555; line-height: 1.78; }
+    .tech-body code {
+      background: #f0f3f8;
+      color: #0d1117;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-family: 'SFMono-Regular', Consolas, 'Courier New', monospace;
+      font-size: 13px;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: #0d1117;
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+    }
+    footer a { color: #4dd9b8; text-decoration: none; }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-top       { flex-direction: column; gap: 32px; }
+      .hero-right     { width: 100%; }
+      .hero-h1        { font-size: 36px; }
+      .hero-sub       { max-width: 100%; }
+      .screenshots-grid { grid-template-columns: 1fr; }
+      .ba-grid        { grid-template-columns: 1fr; }
+      .features-grid  { grid-template-columns: repeat(2, 1fr); }
+      .channels-row   { gap: 12px; }
+      .tech-layout    { flex-direction: column; }
+      .tech-img       { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .section        { padding: 28px 0; }
+      .section-heading { font-size: 26px; margin-bottom: 28px; }
+      .features-grid  { grid-template-columns: 1fr; }
+      .pf-list        { grid-template-columns: 1fr; }
+      .hero-h1        { font-size: 30px; }
+      .channel-tab    { min-width: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     1. HERO
+════════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <div class="hero-left">
+        <h1 class="hero-h1">EasyBusy<br /><span>Chats</span></h1>
+        <p class="hero-sub">All-in-One Messenger Integration: WhatsApp, Telegram, Viber, and Instagram right inside your Odoo Discuss.</p>
+        <div class="hero-badges">
+          <span class="badge">WhatsApp</span>
+          <span class="badge">Telegram</span>
+          <span class="badge">Viber</span>
+          <span class="badge">Facebook</span>
+          <span class="badge">Instagram</span>
+          <span class="badge">WebChat</span>
         </div>
+      </div>
     </div>
+    <div class="hero-preview-bar">
+      <img src="ebx-odoo-preview.gif" alt="EasyBusy Chats preview animation" />
+    </div>
+  </div>
+</header>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     2. PRODUCT DESCRIPTION
+════════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <p class="section-label">Omnichannel Messaging</p>
+    <h2 class="section-heading">EasyBusy Chats</h2>
+
+    <div class="screenshots-grid">
+      <div class="screenshot-card"><img src="chat-list.svg" alt="Chat List" /></div>
+      <div class="screenshot-card"><img src="setup-page.svg" alt="Setup Page" /></div>
+      <div class="screenshot-card"><img src="message-window.svg" alt="Message Window" /></div>
+      <div class="screenshot-card"><img src="crm-chatter-side.svg" alt="CRM / Chatter Side" /></div>
+    </div>
+
+    <p class="desc-text">EasyBusy Chats is a professional Omnichannel solution for Odoo that connects messages inside Odoo. Manage WhatsApp, Telegram, Viber, Facebook Messenger, Instagram and WebChat conversations into one powerful interface.</p>
+    <p class="desc-text">Stop switching between tabs. Our module integrates directly with Odoo Discuss, automates CRM lead creation, and keeps a complete interaction history in the Chatter. Boost your sales team's response time and conversion rates with our AI-ready architecture and rock-solid synchronization.</p>
+
+    <div class="perfect-for">
+      <h3>Perfect For:</h3>
+      <ul class="pf-list">
+        <li>eCommerce businesses</li>
+        <li>customer support teams</li>
+        <li>sales departments</li>
+        <li>agencies</li>
+        <li>logistics companies</li>
+        <li>healthcare businesses</li>
+        <li>educational projects</li>
+        <li>service companies</li>
+      </ul>
+    </div>
+
+    <div class="cta-row">
+      <a href="https://easy-busy.chat/" target="_blank" rel="noopener" class="btn-primary">
+        Try the EasyBusy Chats demo <span class="arr">&#8594;</span>
+      </a>
+      <p class="disclaimer">*WhatsApp Business integrations follow Meta communication policies and template requirements.</p>
+    </div>
+  </div>
 </section>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Key Features</h2>
-        <div class="oe_span12">
-            <ul>
-                <li>Dedicated <strong>Chats</strong> menu inside Odoo.</li>
-                <li>Per-user EasyBusy token and company configuration.</li>
-                <li>Link a conversation to an existing contact.</li>
-                <li>Create a new contact directly from the chat panel.</li>
-                <li>Store messenger chat links on the partner form.</li>
-                <li>Open the original chat from Odoo with a direct link.</li>
-            </ul>
-        </div>
+
+<!-- ════════════════════════════════════════════════════════════
+     3. BEFORE / AFTER
+════════════════════════════════════════════════════════════ -->
+<section class="section section-gray">
+  <div class="container">
+    <p class="section-label">Transformation</p>
+    <h2 class="section-heading">Before / After</h2>
+    <div class="ba-grid">
+      <div class="ba-card">
+        <div class="ba-label before">Before</div>
+        <img src="before.svg" alt="Workflow before EasyBusy Chats" />
+      </div>
+      <div class="ba-card">
+        <div class="ba-label after">After</div>
+        <img src="after.svg" alt="Workflow after EasyBusy Chats" />
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Supported Channels</h2>
-        <div class="oe_span12">
-            <ul>
-                <li>Telegram</li>
-                <li>WhatsApp</li>
-                <li>Viber</li>
-                <li>Facebook Messenger</li>
-                <li>Instagram</li>
-                <li>Website chats</li>
-            </ul>
-        </div>
+
+<!-- ════════════════════════════════════════════════════════════
+     4. KEY FEATURES
+════════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <p class="section-label">What You Get</p>
+    <h2 class="section-heading">Key Features</h2>
+    <div class="features-grid">
+
+      <div class="feature-card"><img src="unified-inbox.svg" alt="Unified Inbox" /></div>
+      <div class="feature-card"><img src="lead-creation.svg" alt="Lead Creation" /></div>
+      <div class="feature-card"><img src="full-chatter-history.svg" alt="Full Chatter History" /></div>
+      <div class="feature-card"><img src="real-time-sync.svg" alt="Real-Time Sync" /></div>
+      <div class="feature-card"><img src="ai-support.svg" alt="AI Support" /></div>
+      <div class="feature-card"><img src="multi-channel-support.svg" alt="Multi-Channel Support" /></div>
+      <div class="feature-card"><img src="messages-setting.svg" alt="Messages Setting" /></div>
+      <div class="feature-card"><img src="send-custom-messages.svg" alt="Send Custom Messages" /></div>
+      <div class="feature-card"><img src="send-template-message.svg" alt="Send Template Message" /></div>
+
     </div>
+  </div>
 </section>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">External Service</h2>
-        <div class="oe_span12">
-            <p>
-                This module integrates with the EasyBusy external SaaS platform:
-                <a href="https://easy-busy.chat/" target="_blank">https://easy-busy.chat/</a>
-            </p>
-            <p>
-                A paid EasyBusy subscription may be required. User data, including
-                access tokens and chat-related information, may be transmitted to
-                EasyBusy servers for processing.
-            </p>
-            <p>
-                The module loads an external JavaScript chat client from EasyBusy
-                infrastructure.
-            </p>
-        </div>
+
+<!-- ════════════════════════════════════════════════════════════
+     5. SUPPORTED CHANNELS
+════════════════════════════════════════════════════════════ -->
+<section class="channels-section">
+  <div class="container">
+    <div class="ch-layout">
+      <div class="ch-cards">
+        <div class="channel-tab"><img src="tg-tab.svg" alt="Telegram" /></div>
+        <div class="channel-tab"><img src="fb-tab.svg" alt="Facebook Messenger" /></div>
+        <div class="channel-tab"><img src="wa-tab.svg" alt="WhatsApp" /></div>
+        <div class="channel-tab"><img src="viber-tab.svg" alt="Viber" /></div>
+        <div class="channel-tab"><img src="inst-tab.svg" alt="Instagram" /></div>
+        <div class="channel-tab"><img src="webchats-tab.svg" alt="Web Chats" /></div>
+        <div class="cursor-wrap"><img src="coursor.svg" alt="" /></div>
+      </div>
+      <div class="ch-text">
+        <span class="ch-pick">Pick</span><br />
+        the right channels<br />
+        for your <span class="ch-needs">needs</span>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Configuration</h2>
-        <div class="oe_span12">
-            <ol>
-                <li>Install the module.</li>
-                <li>Assign the EasyBusy Chats user group to the required users.</li>
-                <li>Open user preferences and fill in the EasyBusy access token.</li>
-                <li>Select the EasyBusy company for the current user.</li>
-                <li>Open the <strong>Chats</strong> menu and start linking conversations.</li>
-            </ol>
-        </div>
+
+<!-- ════════════════════════════════════════════════════════════
+     6. EXTERNAL SERVICE
+════════════════════════════════════════════════════════════ -->
+<section class="section section-gray">
+  <div class="container">
+    <p class="section-label">Integrations</p>
+    <h2 class="section-heading">External Service</h2>
+    <div class="ext-layout">
+      <div class="ext-graph">
+        <img src="external-service-block-graph.png" alt="External service architecture diagram" />
+      </div>
+      <div class="ext-text">
+        <p>This module integrates with the EasyBusy external SaaS platform: <a href="https://easy-busy.chat/" target="_blank" rel="noopener">https://easy-busy.chat/</a></p>
+        <p>A paid EasyBusy subscription may be required. User data, including access tokens and chat-related information, may be transmitted to EasyBusy servers for processing.</p>
+        <p>The module loads an external JavaScript chat client from EasyBusy infrastructure.</p>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Technical Notes</h2>
-        <div class="oe_span12">
-            <p class="oe_mt32">
-                This addon depends on <strong>base_setup</strong> and adds security,
-                user preferences, partner chat history, and the EasyBusy chat client action.
-            </p>
-        </div>
+
+<!-- ════════════════════════════════════════════════════════════
+     7. CONFIGURATION
+════════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <p class="section-label">Getting Started</p>
+    <h2 class="section-heading">Configuration</h2>
+    <div class="video-ratio">
+      <iframe
+        src="https://www.youtube.com/embed/q-dVUM5561o?si=TOv2w_2C8bLYHfM5"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
     </div>
+  </div>
 </section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     8. TECHNICAL NOTES
+════════════════════════════════════════════════════════════ -->
+<section class="section section-gray">
+  <div class="container">
+    <p class="section-label">Developer Info</p>
+    <h2 class="section-heading">Technical Notes</h2>
+    <div class="tech-layout">
+      <div class="tech-img">
+        <img src="technical-note-block-graph.png" alt="Technical architecture diagram" />
+      </div>
+      <div class="tech-body">
+        <p>This addon depends on <code>base_setup</code> and adds security, user preferences, partner chat history, and the EasyBusy chat client action.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <p>EasyBusy Chats for Odoo 17.0 &nbsp;&middot;&nbsp; <a href="https://easy-busy.chat/" target="_blank" rel="noopener">easy-busy.chat</a></p>
+</footer>
+
+</body>
+</html>
