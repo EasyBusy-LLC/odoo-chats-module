@@ -1,0 +1,211 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* easy_busy_chats_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-23 18:12+0000\n"
+"PO-Revision-Date: 2026-05-28 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Assign this opportunity to"
+msgstr "Asignar esta oportunidad a"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__name
+msgid "Chat Title"
+msgstr "Título del chat"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__contact_email
+msgid "Contact Email"
+msgstr "Correo electrónico del contacto"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__contact_phone
+msgid "Contact Phone"
+msgstr "Teléfono del contacto"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__conversion_action
+msgid "Conversion Action"
+msgstr "Acción de conversión"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Convert to Opportunity"
+msgstr "Convertir en oportunidad"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__conversion_action__convert
+msgid "Convert to opportunity"
+msgstr "Convertir en oportunidad"
+
+#. module: easy_busy_chats_crm
+#: model:ir.actions.act_window,name:easy_busy_chats_crm.action_easy_busy_create_opportunity
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Create Opportunity"
+msgstr "Crear oportunidad"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model,name:easy_busy_chats_crm.model_easy_busy_create_opportunity
+msgid "Create Opportunity from EasyBusy Chat"
+msgstr "Crear oportunidad desde el chat EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__create
+msgid "Create a new customer"
+msgstr "Crear un nuevo cliente"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Created from EasyBusy chat"
+msgstr "Creado desde el chat EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__create_date
+msgid "Created on"
+msgstr "Fecha de creación"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__customer_action
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__partner_id
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__new_partner_name
+msgid "Customer Name"
+msgstr "Nombre del cliente"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__display_name
+msgid "Display Name"
+msgstr "Nombre visible"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__nothing
+msgid "Do not link to a customer"
+msgstr "No vincular a un cliente"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__chat_link_id
+msgid "Easy Busy Chat Link"
+msgstr "Enlace de chat Easy Busy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model,name:easy_busy_chats_crm.model_easy_busy_chats
+msgid "Easy Busy Chats"
+msgstr "Easy Busy Chats"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "EasyBusy Opportunity"
+msgstr "Oportunidad EasyBusy"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__id
+msgid "ID"
+msgstr "ID"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__description
+msgid "Internal Notes"
+msgstr "Notas internas"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__write_date
+msgid "Last Updated on"
+msgstr "Fecha de actualización"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__customer_action__exist
+msgid "Link to an existing customer"
+msgstr "Vincular a un cliente existente"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields.selection,name:easy_busy_chats_crm.selection__easy_busy_create_opportunity__conversion_action__merge
+msgid "Merge with existing opportunities"
+msgstr "Combinar con oportunidades existentes"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__duplicated_lead_ids
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Opportunities"
+msgstr "Oportunidades"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Opportunity Details"
+msgstr "Detalles de la oportunidad"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__opportunity_name
+msgid "Opportunity Title"
+msgstr "Título de la oportunidad"
+
+#. module: easy_busy_chats_crm
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats_crm.view_easy_busy_create_opportunity_form
+msgid "Optional notes for the salesperson"
+msgstr "Notas opcionales para el vendedor"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Please choose a customer to link the opportunity to."
+msgstr "Elige un cliente al que vincular la oportunidad."
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Please provide the name of the customer to create."
+msgstr "Proporciona el nombre del cliente a crear."
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__team_id
+msgid "Sales Team"
+msgstr "Equipo de ventas"
+
+#. module: easy_busy_chats_crm
+#: model:ir.model.fields,field_description:easy_busy_chats_crm.field_easy_busy_create_opportunity__user_id
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Select at least two opportunities to merge."
+msgstr "Selecciona al menos dos oportunidades para combinar."

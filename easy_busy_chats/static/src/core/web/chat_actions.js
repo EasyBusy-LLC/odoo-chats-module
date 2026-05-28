@@ -51,10 +51,12 @@ const sanitizeContext = (context) => {
 };
 
 const buildChatLinkPayload = ({ chat = {}, contact = {}, provider, accountId } = {}) => {
-    const chatId = chat?.id; 
-    if (!chatId || !provider) {
+    const chatId = chat?.id;
+    const resolvedProvider = provider || chat?.provider || contact?.provider;
+    const resolvedAccountId = accountId || chat?.accountId || contact?.accountId;
+    if (!chatId || !resolvedProvider) {
         return undefined;
-    } 
+    }
     const contactId = contact?.id ?? chat?.contactId ?? chatId;
     return sanitizeContext({
         provider: provider, 
