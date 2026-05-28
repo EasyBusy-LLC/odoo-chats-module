@@ -1,6 +1,6 @@
 {
     'name': 'EasyBusy Chats CRM',
-    'version': '19.0.1.0.0',
+    'version': '19.0.2.0.0',
     'category': 'Sales/CRM',
     'summary': 'Create and merge CRM opportunities directly from EasyBusy chats.',
     'keywords': ['telegram', 'instagram', 'whatsapp', 'viber', 'webchat', 'messenger', 'facebook'],
