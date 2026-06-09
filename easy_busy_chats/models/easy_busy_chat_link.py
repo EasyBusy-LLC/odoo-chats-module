@@ -64,7 +64,7 @@ class EasyBusyChatLink(models.Model):
         chat_data = chat_data or {}
         contact_data = contact_data or {}
 
-        provider = extra.get("provider") or chat_data.get("provider")
+        provider = (extra.get("provider") or chat_data.get("provider", "")).lower()
         chat_id = chat_data.get("id")
         if not provider or not chat_id:
             return

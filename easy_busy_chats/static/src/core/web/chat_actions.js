@@ -102,7 +102,7 @@ chatActionsRegistry.add("core.create_records", ({ services, payload: factoryPayl
             extraContext = {},
             serverState: runtimeState = serverState,
             onComplete,
-            provider,
+            provider = payload?.chat?.provider || payload?.contact?.provider,
             accountId,
         } = payload;
         const effectiveState = runtimeState || serverState;
@@ -150,7 +150,7 @@ chatActionsRegistry.add("core.create_records", ({ services, payload: factoryPayl
             extraContext = {},
             serverState: runtimeState = serverState,
             onComplete,
-            provider,
+            provider = payload.chat?.provider || payload.contact?.provider,
             accountId,
         } = payload;
         const effectiveState = runtimeState || serverState;
@@ -221,7 +221,7 @@ chatActionsRegistry.add("core.create_records", ({ services, payload: factoryPayl
             extraContext = {},
             serverState: runtimeState = serverState,
             onComplete,
-            provider,
+            provider = payload?.chat?.provider || payload?.contact?.provider,
             accountId,
         } = payload;
         const effectiveState = runtimeState || serverState;

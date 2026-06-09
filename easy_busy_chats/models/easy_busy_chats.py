@@ -32,7 +32,7 @@ class EasyBusyChats(models.Model):
         chat_data = payload.get("chat") or {}
         contact_data = payload.get("contact") or {}
 
-        provider = payload.get("provider") or chat_data.get("provider")
+        provider = (payload.get("provider") or chat_data.get("provider", "")).lower()
         account_id = payload.get("accountId") or chat_data.get("accountId")
         contact_id = (
             contact_data.get("id")

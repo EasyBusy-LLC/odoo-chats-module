@@ -45,7 +45,7 @@ class ResPartner(models.Model):
     def _sanitize_easy_busy_chat_payload(payload):
         if not isinstance(payload, dict):
             return False
-        provider = payload.get("provider")
+        provider = (payload.get("provider", "")).lower()
         chat_id = payload.get("chat_id")
         if not provider or not chat_id:
             return False
