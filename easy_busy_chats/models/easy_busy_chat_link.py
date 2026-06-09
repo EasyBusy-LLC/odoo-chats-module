@@ -1,5 +1,6 @@
 from datetime import datetime
 from odoo import api, fields, models, _
+from odoo.orm.table_objects import Constraint
 from urllib.parse import urlencode
 
 
@@ -23,13 +24,10 @@ class EasyBusyChatLink(models.Model):
     contact_user_name = fields.Char(string="User name")
     redirect_url = fields.Char(string="Chat URL", compute="_compute_redirect_url")
 
-    _sql_constraints = [
-        (
-            "easy_busy_chat_link_unique",
-            "unique(provider, chat_id, contact_id)",
-            "The chat link already exists for this contact.",
-        ),
-    ]
+    _easy_busy_chat_link_unique = Constraint(
+        "unique(provider, chat_id, contact_id)",
+        "The chat link already exists for this contact.",
+    )
 
     @staticmethod
     def _to_datetime(timestamp):
@@ -64,7 +62,7 @@ class EasyBusyChatLink(models.Model):
         chat_data = chat_data or {}
         contact_data = contact_data or {}
 
-        provider = extra.get("provider") or chat_data.get("provider")
+        provider = (extra.get("provider", None) or chat_data.get("provider", "")).lower()
         chat_id = chat_data.get("id")
         if not provider or not chat_id:
             return
