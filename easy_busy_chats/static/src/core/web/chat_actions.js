@@ -52,9 +52,7 @@ const sanitizeContext = (context) => {
 
 const buildChatLinkPayload = ({ chat = {}, contact = {}, provider, accountId } = {}) => {
     const chatId = chat?.id;
-    const resolvedProvider = provider || chat?.provider || contact?.provider;
-    const resolvedAccountId = accountId || chat?.accountId || contact?.accountId;
-    if (!chatId || !resolvedProvider) {
+    if (!chatId || !provider) {
         return undefined;
     }
     const contactId = contact?.id ?? chat?.contactId ?? chatId;
@@ -96,13 +94,14 @@ chatActionsRegistry.add("core.create_records", ({ services, payload: factoryPayl
     };
 
     const openCreateOpportunity = (payload = {}) => {
+
         const {
             chat = {},
             contact = {},
             extraContext = {},
             serverState: runtimeState = serverState,
             onComplete,
-            provider,
+            provider = payload.chat.provider,
             accountId,
         } = payload;
         const effectiveState = runtimeState || serverState;
@@ -150,7 +149,7 @@ chatActionsRegistry.add("core.create_records", ({ services, payload: factoryPayl
             extraContext = {},
             serverState: runtimeState = serverState,
             onComplete,
-            provider,
+            provider = payload.chat.provider,
             accountId,
         } = payload;
         const effectiveState = runtimeState || serverState;
@@ -221,7 +220,7 @@ chatActionsRegistry.add("core.create_records", ({ services, payload: factoryPayl
             extraContext = {},
             serverState: runtimeState = serverState,
             onComplete,
-            provider,
+            provider = payload.chat.provider,
             accountId,
         } = payload;
         const effectiveState = runtimeState || serverState;

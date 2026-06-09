@@ -21,11 +21,18 @@ export class ChatsClientAction extends Component {
         };
         const chatCallbacks = getChatCallbacks({ services });
 
-        const hash = window.location.hash.slice(1);
         // Parse provider and chatid from URL hash fragment
         const getUrlParams = () => {
+            const actionParams = this.props.action?.params || {};
+            if (actionParams.selectedProvider || actionParams.selectedChatId || actionParams.selectedAccountId) {
+                return {
+                    selectedAccountId: actionParams.selectedAccountId || null,
+                    selectedProvider: actionParams.selectedProvider || null,
+                    selectedChatId: actionParams.selectedChatId || null,
+                };
+            }
 
-            const params = new URLSearchParams(hash);
+            const params = new URLSearchParams(window.location.hash.slice(1));
             return {
                 selectedAccountId: params.get("accountid"),
                 selectedProvider: params.get("provider"),

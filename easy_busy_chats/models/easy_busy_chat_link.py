@@ -64,7 +64,7 @@ class EasyBusyChatLink(models.Model):
         chat_data = chat_data or {}
         contact_data = contact_data or {}
 
-        provider = extra.get("provider") or chat_data.get("provider")
+        provider = (extra.get("provider", None) or chat_data.get("provider", "")).lower()
         chat_id = chat_data.get("id")
         if not provider or not chat_id:
             return
@@ -100,11 +100,16 @@ class EasyBusyChatLink(models.Model):
 
     def action_open_chat(self):
         self.ensure_one()
-        if not self.redirect_url:
+        if not self.provider or not self.chat_id:
             return False
+
         return {
-            "type": "ir.actions.act_url",
+            "type": "ir.actions.client",
+            "tag": "easy_busy_chats.action_chats",
             "name": _("Go to Chat"),
-            "url": self.redirect_url,
-            "target": "self",
+            "params": {
+                "selectedProvider": self.provider,
+                "selectedChatId": self.chat_id,
+                "selectedAccountId": self.account_id or False,
+            },
         }
