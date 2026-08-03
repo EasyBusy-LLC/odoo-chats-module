@@ -6,10 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 17:19+0000\n"
+"POT-Creation-Date: 2026-07-31 11:42+0000\n"
 "PO-Revision-Date: 2026-04-23 17:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -30,14 +31,12 @@ msgstr "Додайте токен, щоб завантажити компані�
 #. module: easy_busy_chats
 #. odoo-python
 #: code:addons/easy_busy_chats/models/res_users.py:0
-#, python-format
 msgid "Add your Easy Busy access token first."
 msgstr "Спочатку додайте свій токен доступу Easy Busy."
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
-#, python-format
 msgid "Add your Easy Busy access token in Preferences to continue."
 msgstr "Щоб продовжити, додайте свій токен доступу Easy Busy в налаштуваннях."
 
@@ -49,9 +48,23 @@ msgstr "Адміністратор"
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#, python-format
 msgid "Associate this chat with an existing contact."
 msgstr "Пов’язати цей чат із наявним контактом."
+
+#. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.res_config_settings_view_form
+msgid ""
+"Automatically link the chat to the contact that already owns this phone "
+"number instead of linking it manually."
+msgstr "Автоматично прив'язувати чат до контакту, якому вже належить цей номер телефону, замість прив'язування вручну."
+
+#. module: easy_busy_chats
+#: model:ir.model.fields,field_description:easy_busy_chats.field_res_company__easy_busy_auto_link_partner_by_phone
+#: model:ir.model.fields,field_description:easy_busy_chats.field_res_config_settings__easy_busy_auto_link_partner_by_phone
+msgid ""
+"Automatically link the contact to the phone number if the contact exists in "
+"partners"
+msgstr "Автоматично прив'язувати контакт до номера телефону, якщо контакт існує в партнерах"
 
 #. module: easy_busy_chats
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_easy_busy_link_contact_form
@@ -76,8 +89,22 @@ msgstr "Посилання на чат"
 #. module: easy_busy_chats
 #: model:ir.actions.client,name:easy_busy_chats.action_chats
 #: model:ir.ui.menu,name:easy_busy_chats.menu_root_discuss
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
 msgid "Chats"
 msgstr "Чати"
+
+#. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.res_config_settings_view_form
+msgid ""
+"Checked the first time a chat is opened. The phone number reported by the "
+"messenger is normalised with the country of this company before being "
+"compared with the phone fields of your contacts."
+msgstr "Перевіряється під час першого відкриття чату. Номер телефону, отриманий від месенджера, нормалізується за країною цієї компанії, а потім порівнюється з полями телефону ваших контактів."
+
+#. module: easy_busy_chats
+#: model:ir.model,name:easy_busy_chats.model_res_company
+msgid "Companies"
+msgstr "Компанії"
 
 #. module: easy_busy_chats
 #: model:ir.model.fields,field_description:easy_busy_chats.field_easy_busy_company__external_id
@@ -88,6 +115,11 @@ msgstr "ID компанії"
 #: model:ir.model.fields,field_description:easy_busy_chats.field_easy_busy_company__name
 msgid "Company Name"
 msgstr "Назва компанії"
+
+#. module: easy_busy_chats
+#: model:ir.model,name:easy_busy_chats.model_res_config_settings
+msgid "Config Settings"
+msgstr "Налаштування"
 
 #. module: easy_busy_chats
 #: model:ir.model,name:easy_busy_chats.model_res_partner
@@ -101,33 +133,34 @@ msgid "Contact ID"
 msgstr "ID контакту"
 
 #. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.res_config_settings_view_form
+msgid "Contacts"
+msgstr "Контакти"
+
+#. module: easy_busy_chats
 #. odoo-python
 #: code:addons/easy_busy_chats/models/res_users.py:0
-#, python-format
 msgid ""
 "Could not load Easy Busy companies. Verify the access token and try again."
-msgstr "Не вдалося завантажити компанії Easy Busy. Перевірте токен доступу та спробуйте ще раз."
+msgstr ""
+"Не вдалося завантажити компанії Easy Busy. Перевірте токен доступу та "
+"спробуйте ще раз."
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/easy_busy_token_field.js:0
-#, python-format
 msgid "Could not refresh Easy Busy companies."
 msgstr "Не вдалося оновити компанії Easy Busy."
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#, python-format
 msgid "Create Contact"
 msgstr "Створити контакт"
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#, python-format
 msgid "Create Opportunity"
 msgstr "Створити угоду"
 
@@ -181,21 +214,18 @@ msgstr "Easy Busy Чати"
 #. odoo-python
 #: code:addons/easy_busy_chats/models/res_users.py:0
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_users_form_easy_busy_chats_dialog
-#, python-format
 msgid "Easy Busy Chats Settings"
 msgstr "Налаштування Easy Busy Chats"
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
-#, python-format
 msgid "Easy Busy Chats is not configured"
 msgstr "Easy Busy Chats не налаштовано"
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
-#, python-format
 msgid "Easy Busy Chats settings are unavailable right now."
 msgstr "Налаштування Easy Busy Chats зараз недоступні."
 
@@ -213,14 +243,17 @@ msgstr "Назва компанії Easy Busy"
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
-#, python-format
 msgid "Easy Busy company is not connected"
 msgstr "Компанію Easy Busy не підключено"
 
 #. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.res_config_settings_view_form
+msgid "EasyBusy Chats"
+msgstr "EasyBusy Chats"
+
+#. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
-#, python-format
 msgid "Failed to load settings"
 msgstr "Не вдалося завантажити налаштування"
 
@@ -236,7 +269,6 @@ msgstr "Отримати токен"
 #: code:addons/easy_busy_chats/models/easy_busy_chat_link.py:0
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_easy_busy_chat_link_form
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
-#, python-format
 msgid "Go to Chat"
 msgstr "Перейти до чату"
 
@@ -273,9 +305,7 @@ msgstr "Пов’язати контакт"
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_easy_busy_link_contact_form
-#, python-format
 msgid "Link Existing Contact"
 msgstr "Пов’язати наявний контакт"
 
@@ -287,7 +317,6 @@ msgstr "Пов’язати чат із наявним контактом"
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.xml:0
-#, python-format
 msgid "Loading..."
 msgstr "Завантаження..."
 
@@ -303,56 +332,45 @@ msgid "Messenger Chats"
 msgstr "Чати месенджерів"
 
 #. module: easy_busy_chats
-#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
-msgid "Chats"
-msgstr "Чати"
-
-#. module: easy_busy_chats
 #. odoo-python
 #: code:addons/easy_busy_chats/models/easy_busy_link_contact.py:0
-#, python-format
 msgid "Missing chat payload to link with the contact."
 msgstr "Немає даних чату для прив’язки до контакту."
 
 #. module: easy_busy_chats
 #. odoo-python
 #: code:addons/easy_busy_chats/models/res_users.py:0
-#, python-format
 msgid "No Easy Busy companies were found for this token."
 msgstr "Для цього токена не знайдено жодної компанії Easy Busy."
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
-#, python-format
 msgid "Open Preferences and load your Easy Busy companies to continue."
-msgstr "Відкрийте налаштування та завантажте свої компанії Easy Busy, щоб продовжити."
+msgstr ""
+"Відкрийте налаштування та завантажте свої компанії Easy Busy, щоб продовжити."
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
-#, python-format
 msgid "Open Settings"
 msgstr "Відкрити налаштування"
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#, python-format
 msgid "Open a dialog to create a new contact."
 msgstr "Відкрити вікно для створення нового контакту."
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#, python-format
 msgid "Open a new CRM opportunity form."
 msgstr "Відкрити форму нової CRM-угоди."
 
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#, python-format
 msgid "Open the existing contact form."
 msgstr "Відкрити наявний контакт."
 
@@ -393,7 +411,15 @@ msgstr "Ім’я користувача"
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
-#, python-format
 msgid "View Contact"
 msgstr "Відкрити контакт"
+
+#. module: easy_busy_chats
+#: model:ir.model.fields,help:easy_busy_chats.field_res_company__easy_busy_auto_link_partner_by_phone
+#: model:ir.model.fields,help:easy_busy_chats.field_res_config_settings__easy_busy_auto_link_partner_by_phone
+msgid ""
+"When a chat is opened and it is not linked to any contact yet, look for an "
+"existing contact having the same phone number and link the chat to it "
+"automatically. The chat then offers 'View Contact' instead of 'Create "
+"Contact'."
+msgstr "Коли чат відкривається і ще не прив'язаний до жодного контакту, виконується пошук наявного контакту з таким самим номером телефону, і чат автоматично прив'язується до нього. Після цього чат пропонує «Відкрити контакт» замість «Створити контакт»."

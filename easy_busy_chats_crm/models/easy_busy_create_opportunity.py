@@ -75,6 +75,14 @@ class EasyBusyCreateOpportunity(models.TransientModel):
         contact_phone = res.get("contact_phone") or self.env.context.get("default_phone")
         contact_email = res.get("contact_email") or self.env.context.get("default_email_from")
 
+        # The chat may not be linked yet: recognise the customer from its phone
+        # number when the company allows it, so that the wizard shows the
+        # existing customer instead of silently creating a duplicate.
+        auto_partner_id = False
+        if not partner_id:
+            auto_partner_id = self._easy_busy_find_existing_partner_id(contact_phone)
+            partner_id = auto_partner_id
+
         if "name" in fields_list:
             res["name"] = payload.get("chat_title")
         if "opportunity_name" in fields_list and not res.get("opportunity_name"):
@@ -83,6 +91,10 @@ class EasyBusyCreateOpportunity(models.TransientModel):
             res["new_partner_name"] = payload.get("contact_user_name") or payload.get("chat_title")
         if "customer_action" in fields_list and "customer_action" not in res:
             res["customer_action"] = "exist" if partner_id else "create"
+        if "customer_action" in fields_list and auto_partner_id:
+            # the field default (and the context) were computed without knowing
+            # about the customer we just recognised from the phone number
+            res["customer_action"] = "exist"
         if "partner_id" in fields_list and partner_id:
             res["partner_id"] = partner_id
         if "contact_phone" in fields_list and not res.get("contact_phone"):
@@ -103,6 +115,40 @@ class EasyBusyCreateOpportunity(models.TransientModel):
             if "conversion_action" in fields_list:
                 res["conversion_action"] = "merge" if len(duplicated_leads) >= 2 else "convert"
         return res
+
+    @api.model
+    def _easy_busy_find_existing_partner(self, phone):
+        """Existing customer owning ``phone``, when the company allows linking.
+
+        Returns an empty recordset when the setting is off, when nothing matches
+        or when several customers share the number.
+        """
+        company = self.env.company
+        if not company.sudo().easy_busy_auto_link_partner_by_phone:
+            return self.env["res.partner"]
+        return self.env["res.partner"]._easy_busy_find_partner_by_phone(
+            phone, company=company,
+        )
+
+    @api.model
+    def _easy_busy_find_existing_partner_id(self, phone):
+        partner = self._easy_busy_find_existing_partner(phone)
+        return partner.id if partner else False
+
+    @api.onchange("contact_phone")
+    def _onchange_contact_phone_find_partner(self):
+        """Reuse an existing customer as soon as the phone number matches one.
+
+        Declared before ``_onchange_duplicate_lead_ids`` so that the duplicate
+        opportunity search below sees the partner set here.
+        """
+        for wizard in self:
+            if wizard.customer_action != "create" or wizard.partner_id:
+                continue
+            existing = wizard._easy_busy_find_existing_partner(wizard.contact_phone)
+            if existing:
+                wizard.partner_id = existing
+                wizard.customer_action = "exist"
 
     @api.model
     def _default_user_id(self):
@@ -132,8 +178,9 @@ class EasyBusyCreateOpportunity(models.TransientModel):
             or not payload.get("chat_id")
         ):
             return self.env["easy.busy.chat.link"]
+         
         domain = [
-            ("provider", "=", payload["provider"]),
+            ("provider", "=", payload["provider"].lower()),
             ("chat_id", "=", payload["chat_id"]),
         ]
         if partner_id:
@@ -198,6 +245,16 @@ class EasyBusyCreateOpportunity(models.TransientModel):
             )
             if not partner_name:
                 raise UserError(_("Please provide the name of the customer to create."))
+
+            # Safety net for submissions that never round-tripped an onchange
+            # (RPC calls, tests): never duplicate a customer we could link to.
+            existing = self._easy_busy_find_existing_partner(self.contact_phone)
+            if existing:
+                if payload:
+                    self.env["res.partner"]._create_easy_busy_chat_links_from_payload(
+                        existing, payload
+                    )
+                return existing
             partner_vals = {
                 "name": partner_name,
                 "phone": self.contact_phone,

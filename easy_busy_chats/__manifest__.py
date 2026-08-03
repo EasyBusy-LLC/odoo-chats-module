@@ -1,6 +1,6 @@
 {
     'name': 'EasyBusy Chats',
-    'version': '18.0.3.0.0',
+    'version': '18.0.3.1.0',
     'category': 'Services/Chats',
     'summary': 'Unified messenger inbox in Odoo with contact linking and chat history.',
     'keywords': ['telegram', 'instagram', 'whatsapp', 'viber', 'webchat', 'messenger', 'facebook'],
@@ -26,6 +26,8 @@ Key features
 * Open the EasyBusy chat workspace inside Odoo from a dedicated menu.
 * Connect each Odoo user with an EasyBusy access token and company.
 * Link chats to existing contacts or create a new contact from a conversation.
+* Optionally recognise the contact of a chat automatically from its phone number
+  (per-company setting).
 * Store linked messenger chats on the partner form.
 * Open the original conversation directly from Odoo.
 * Restrict access with the dedicated EasyBusy Chats user group.
@@ -45,6 +47,7 @@ Getting started
         'security/easy_busy_chats_security.xml',
         'security/ir.model.access.csv',
         'views/easy_busy_chats_views.xml',
+        'views/res_config_settings_views.xml',
         'views/res_partner_views.xml',
         'views/res_users_views.xml',
         'views/easy_busy_link_contact_views.xml',
