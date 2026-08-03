@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 17:16+0000\n"
-"PO-Revision-Date: 2026-04-23 17:16+0000\n"
+"POT-Creation-Date: 2026-07-31 11:42+0000\n"
+"PO-Revision-Date: 2026-07-31 11:42+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -30,12 +30,14 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-python
 #: code:addons/easy_busy_chats/models/res_users.py:0
+#: code:addons/easy_busy_chats/models/res_users.py:0
 #, python-format
 msgid "Add your Easy Busy access token first."
 msgstr ""
 
 #. module: easy_busy_chats
 #. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #, python-format
 msgid "Add your Easy Busy access token in Preferences to continue."
@@ -49,8 +51,24 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #, python-format
 msgid "Associate this chat with an existing contact."
+msgstr ""
+
+#. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.res_config_settings_view_form
+msgid ""
+"Automatically link the chat to the contact that already owns this phone "
+"number instead of linking it manually."
+msgstr ""
+
+#. module: easy_busy_chats
+#: model:ir.model.fields,field_description:easy_busy_chats.field_res_company__easy_busy_auto_link_partner_by_phone
+#: model:ir.model.fields,field_description:easy_busy_chats.field_res_config_settings__easy_busy_auto_link_partner_by_phone
+msgid ""
+"Automatically link the contact to the phone number if the contact exists in "
+"partners"
 msgstr ""
 
 #. module: easy_busy_chats
@@ -76,7 +94,21 @@ msgstr ""
 #. module: easy_busy_chats
 #: model:ir.actions.client,name:easy_busy_chats.action_chats
 #: model:ir.ui.menu,name:easy_busy_chats.menu_root_discuss
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
 msgid "Chats"
+msgstr ""
+
+#. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.res_config_settings_view_form
+msgid ""
+"Checked the first time a chat is opened. The phone number reported by the "
+"messenger is normalised with the country of this company before being "
+"compared with the phone fields of your contacts."
+msgstr ""
+
+#. module: easy_busy_chats
+#: model:ir.model,name:easy_busy_chats.model_res_company
+msgid "Companies"
 msgstr ""
 
 #. module: easy_busy_chats
@@ -87,6 +119,11 @@ msgstr ""
 #. module: easy_busy_chats
 #: model:ir.model.fields,field_description:easy_busy_chats.field_easy_busy_company__name
 msgid "Company Name"
+msgstr ""
+
+#. module: easy_busy_chats
+#: model:ir.model,name:easy_busy_chats.model_res_config_settings
+msgid "Config Settings"
 msgstr ""
 
 #. module: easy_busy_chats
@@ -101,7 +138,13 @@ msgid "Contact ID"
 msgstr ""
 
 #. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.res_config_settings_view_form
+msgid "Contacts"
+msgstr ""
+
+#. module: easy_busy_chats
 #. odoo-python
+#: code:addons/easy_busy_chats/models/res_users.py:0
 #: code:addons/easy_busy_chats/models/res_users.py:0
 #, python-format
 msgid ""
@@ -111,6 +154,7 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/easy_busy_token_field.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/easy_busy_token_field.js:0
 #, python-format
 msgid "Could not refresh Easy Busy companies."
 msgstr ""
@@ -119,12 +163,16 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #, python-format
 msgid "Create Contact"
 msgstr ""
 
 #. module: easy_busy_chats
 #. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #, python-format
@@ -180,6 +228,7 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-python
 #: code:addons/easy_busy_chats/models/res_users.py:0
+#: code:addons/easy_busy_chats/models/res_users.py:0
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_users_form_easy_busy_chats_dialog
 #, python-format
 msgid "Easy Busy Chats Settings"
@@ -188,12 +237,14 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #, python-format
 msgid "Easy Busy Chats is not configured"
 msgstr ""
 
 #. module: easy_busy_chats
 #. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #, python-format
 msgid "Easy Busy Chats settings are unavailable right now."
@@ -213,12 +264,19 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #, python-format
 msgid "Easy Busy company is not connected"
 msgstr ""
 
 #. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.res_config_settings_view_form
+msgid "EasyBusy Chats"
+msgstr ""
+
+#. module: easy_busy_chats
 #. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #, python-format
 msgid "Failed to load settings"
@@ -233,6 +291,7 @@ msgstr ""
 
 #. module: easy_busy_chats
 #. odoo-python
+#: code:addons/easy_busy_chats/models/easy_busy_chat_link.py:0
 #: code:addons/easy_busy_chats/models/easy_busy_chat_link.py:0
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_easy_busy_chat_link_form
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
@@ -274,6 +333,8 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_easy_busy_link_contact_form
 #, python-format
 msgid "Link Existing Contact"
@@ -286,6 +347,7 @@ msgstr ""
 
 #. module: easy_busy_chats
 #. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.xml:0
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.xml:0
 #, python-format
 msgid "Loading..."
@@ -303,12 +365,8 @@ msgid "Messenger Chats"
 msgstr ""
 
 #. module: easy_busy_chats
-#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
-msgid "Chats"
-msgstr ""
-
-#. module: easy_busy_chats
 #. odoo-python
+#: code:addons/easy_busy_chats/models/easy_busy_link_contact.py:0
 #: code:addons/easy_busy_chats/models/easy_busy_link_contact.py:0
 #, python-format
 msgid "Missing chat payload to link with the contact."
@@ -317,12 +375,14 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-python
 #: code:addons/easy_busy_chats/models/res_users.py:0
+#: code:addons/easy_busy_chats/models/res_users.py:0
 #, python-format
 msgid "No Easy Busy companies were found for this token."
 msgstr ""
 
 #. module: easy_busy_chats
 #. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #, python-format
 msgid "Open Preferences and load your Easy Busy companies to continue."
@@ -331,12 +391,14 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chats_client_action.js:0
 #, python-format
 msgid "Open Settings"
 msgstr ""
 
 #. module: easy_busy_chats
 #. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #, python-format
 msgid "Open a dialog to create a new contact."
@@ -345,12 +407,14 @@ msgstr ""
 #. module: easy_busy_chats
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #, python-format
 msgid "Open a new CRM opportunity form."
 msgstr ""
 
 #. module: easy_busy_chats
 #. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #, python-format
 msgid "Open the existing contact form."
@@ -394,6 +458,18 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
 #, python-format
 msgid "View Contact"
+msgstr ""
+
+#. module: easy_busy_chats
+#: model:ir.model.fields,help:easy_busy_chats.field_res_company__easy_busy_auto_link_partner_by_phone
+#: model:ir.model.fields,help:easy_busy_chats.field_res_config_settings__easy_busy_auto_link_partner_by_phone
+msgid ""
+"When a chat is opened and it is not linked to any contact yet, look for an "
+"existing contact having the same phone number and link the chat to it "
+"automatically. The chat then offers 'View Contact' instead of 'Create "
+"Contact'."
 msgstr ""

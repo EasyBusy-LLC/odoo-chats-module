@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.easy.busy.chats</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="60"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="EasyBusy Chats" string="EasyBusy Chats" name="easy_busy_chats"
+                     logo="/easy_busy_chats/static/description/icon.png">
+                    <block title="Contacts" name="easy_busy_chats_contacts_setting_container">
+                        <field name="company_id" invisible="1"/>
+                        <setting id="easy_busy_auto_link_partner_by_phone_setting"
+                                 company_dependent="1"
+                                 title="Checked the first time a chat is opened. The phone number reported by the messenger is normalised with the country of this company before being compared with the phone fields of your contacts."
+                                 help="Automatically link the chat to the contact that already owns this phone number instead of linking it manually.">
+                            <field name="easy_busy_auto_link_partner_by_phone"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
