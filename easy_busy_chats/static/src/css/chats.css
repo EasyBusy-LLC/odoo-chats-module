@@ -63,3 +63,42 @@
 .o_easy_busy_chats_tree .oe_easy_busy_chat_redirect .btn {
   margin: 0 auto;
 }
+
+/* Conversation dialog (Messengers tab → Open Chat) */
+.o_easy_busy_chat_conversation {
+  position: relative;
+  width: 100%;
+  height: min(85vh, 960px);
+}
+.o_modal_full .o_easy_busy_chat_conversation {
+  height: 100%;
+}
+.o_easy_busy_chat_conversation_root {
+  height: 100%;
+  min-height: 0;
+}
+.o_easy_busy_chat_conversation_status {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* Full form in a dialog (contact opened from the chats): Odoo hides the
+   chatter in dialogs, show it below the sheet, at the dialog's width. */
+.modal .modal-dialog .o_form_view.o_easy_busy_full_form_dialog .o-mail-Form-chatter {
+  display: flex;
+}
+
+.o_form_view.o_easy_busy_full_form_dialog .o-mail-Form-chatter.o-aside {
+  width: 100%;
+  flex-grow: 0;
+}
+
+.o_form_view.o_easy_busy_full_form_dialog .o_form_renderer {
+  flex-direction: column !important;
+  height: auto !important;
+}

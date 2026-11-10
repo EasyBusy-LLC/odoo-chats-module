@@ -97,17 +97,46 @@ class EasyBusyChatLink(models.Model):
             self.create(values)
 
     def action_open_chat(self):
+        """Open this chat in a dialog over the current view (conversation view
+        of the chats plugin). Without an account the plugin can't target the
+        chat, so the full chats page is opened instead."""
         self.ensure_one()
         if not self.provider or not self.chat_id:
             return False
+        if not self.account_id:
+            return self.action_open_all_chats()
+        return {
+            "type": "ir.actions.client",
+            "tag": "easy_busy_chats.open_conversation",
+            "params": {
+                "provider": self.provider,
+                "chatid": self.chat_id,
+                "accountid": self.account_id,
+                "link_id": self.id,
+            },
+        }
 
+    def action_unlink_from_contact(self):
+        """Remove the link between the chat and the contact (the chat itself
+        stays in EasyBusy Chats)."""
+        self.unlink()
+        return True
+
+    def action_open_all_chats(self):
+        """Go to the chats page with this chat selected."""
+        self.ensure_one()
+        menu = self.env.ref("easy_busy_chats.menu_root_discuss", raise_if_not_found=False)
+        params = {}
+        if self.provider and self.chat_id:
+            params = {
+                "selectedProvider": self.provider,
+                "selectedChatId": self.chat_id,
+                "selectedAccountId": self.account_id or False,
+            }
         return {
             "type": "ir.actions.client",
             "tag": "easy_busy_chats.action_chats",
             "name": _("Go to Chat"),
-            "params": {
-                "selectedProvider": self.provider,
-                "selectedChatId": self.chat_id,
-                "selectedAccountId": self.account_id or False,
-            },
+            "params": params,
+            "context": {"menu_id": menu.id} if menu else {},
         }

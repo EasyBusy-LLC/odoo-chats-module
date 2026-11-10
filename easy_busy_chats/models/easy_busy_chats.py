@@ -2,7 +2,8 @@ import logging
 
 from psycopg2 import IntegrityError
 
-from odoo import api, models
+from odoo import _, api, models
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -94,13 +95,100 @@ class EasyBusyChats(models.Model):
             "allowed_action_ids": allowed_action_ids,
             "contact_exists": partner_exists,
             "contact_partner_id": partner_record.id if partner_record else False,
+            "contact_partner_name": partner_record.display_name if partner_record else False,
             "contact_auto_linked": auto_linked,
         }
 
+    @api.model
+    def _get_chat_link_domain(self, payload):
+        """Links of the chat contact in ``payload`` (``chat``, ``contact``,
+        ``provider``), or False when it can't be identified."""
+        payload = payload or {}
+        chat_data = payload.get("chat") or {}
+        contact_data = payload.get("contact") or {}
+        provider = payload.get("provider") or chat_data.get("provider")
+        contact_id = (
+            contact_data.get("id")
+            or chat_data.get("contactId")
+            or chat_data.get("id")
+        )
+        if not provider or not contact_id:
+            return False
+        return [
+            ("provider", "=", str(provider).lower()),
+            ("contact_id", "=", contact_id),
+        ]
+
+    @api.model
+    def link_chat_to_partner(self, partner_id, payload):
+        """Link a chat created in the chats plugin (``onChatCreated`` payload:
+        ``chat``, ``contact``, ``provider``, ``accountId``) to a contact."""
+        if not self.env.user.has_group('easy_busy_chats.group_easy_busy_chats_user'):
+            raise UserError(_("You are not allowed to link chats to contacts."))
+        payload = payload or {}
+        chat_data = payload.get("chat") or {}
+        contact_data = payload.get("contact") or {}
+        provider = str(payload.get("provider") or chat_data.get("provider") or "").lower()
+        chat_id = chat_data.get("id")
+        if not provider or not chat_id:
+            return {"status": "invalid"}
+
+        partner = self.env["res.partner"].browse(int(partner_id)).exists()
+        if not partner:
+            return {"status": "invalid"}
+        partner.check_access("write")
+
+        Link = self.env["easy.busy.chat.link"]
+        contact_id = contact_data.get("id", chat_id)
+        existing = Link.search(
+            [
+                ("provider", "=", provider),
+                ("chat_id", "=", chat_id),
+                ("contact_id", "=", contact_id),
+            ],
+            limit=1,
+        )
+        if existing and existing.partner_id != partner:
+            # Already linked to another contact: keep that link untouched.
+            return {
+                "status": "linked_elsewhere",
+                "link_id": existing.id,
+                "partner_name": existing.partner_id.display_name,
+            }
+        Link.upsert_from_payload(
+            partner,
+            chat_data,
+            contact_data,
+            {"provider": provider, "accountId": payload.get("accountId")},
+        )
+        link = Link.search(
+            [
+                ("partner_id", "=", partner.id),
+                ("provider", "=", provider),
+                ("chat_id", "=", chat_id),
+            ],
+            limit=1,
+        )
+        if not link:
+            return {"status": "invalid"}
+        return {"status": "linked", "link_id": link.id, "partner_name": partner.display_name}
+
+    @api.model
+    def unlink_chat_contact(self, payload):
+        """Remove the links between the chat contact and Odoo contacts."""
+        if not self.env.user.has_group('easy_busy_chats.group_easy_busy_chats_user'):
+            raise UserError(_("You are not allowed to unlink chat contacts."))
+        domain = self._get_chat_link_domain(payload)
+        if not domain:
+            return False
+        self.env["easy.busy.chat.link"].search(domain).unlink()
+        return True
+
     def _collect_allowed_actions(self, chat_data, partner_exists):
-        allowed_action_ids = []
+        # "contact" is the select grouping the contact actions below.
+        allowed_action_ids = ["contact"]
         if partner_exists:
-            allowed_action_ids.append("view_contact")
+            allowed_action_ids.extend(["view_contact", "unlink_contact"])
         else:
             allowed_action_ids.extend(["create_contact", "link_contact"])
         return allowed_action_ids

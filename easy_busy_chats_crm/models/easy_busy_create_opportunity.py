@@ -1,5 +1,41 @@
+import ipaddress
+import logging
+import mimetypes
+import os
+import socket
+from urllib.parse import unquote, urljoin, urlparse
+
+import requests
+from markupsafe import Markup, escape
+
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+from odoo.tools import is_html_empty, plaintext2html
+
+_logger = logging.getLogger(__name__)
+
+# Limits for copying files of the selected chat messages into the opportunity.
+CHAT_FILE_MAX_COUNT = 30
+CHAT_FILE_MAX_SIZE = 25 * 1024 * 1024
+CHAT_FILES_MAX_TOTAL_SIZE = 100 * 1024 * 1024
+CHAT_FILE_TIMEOUT = 15
+CHAT_FILE_MAX_REDIRECTS = 3
+
+
+def _is_public_url(url):
+    """Only fetch http(s) URLs whose host resolves to public addresses: the
+    URLs come from the browser, so internal hosts must not be reachable."""
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        return False
+    port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    try:
+        infos = socket.getaddrinfo(parsed.hostname, port, proto=socket.IPPROTO_TCP)
+    except (OSError, UnicodeError):
+        return False
+    return bool(infos) and all(
+        ipaddress.ip_address(info[4][0].split("%")[0]).is_global for info in infos
+    )
 
 
 class EasyBusyCreateOpportunity(models.TransientModel):
@@ -54,7 +90,7 @@ class EasyBusyCreateOpportunity(models.TransientModel):
     partner_id = fields.Many2one("res.partner", string="Customer")
     new_partner_name = fields.Char(string="Customer Name")
     opportunity_name = fields.Char(string="Opportunity Title", required=True)
-    description = fields.Text(string="Internal Notes")
+    description = fields.Html(string="Internal Notes")
     contact_phone = fields.Char(string="Contact Phone")
     contact_email = fields.Char(string="Contact Email")
 
@@ -101,6 +137,8 @@ class EasyBusyCreateOpportunity(models.TransientModel):
             res["contact_phone"] = contact_phone
         if "contact_email" in fields_list and not res.get("contact_email"):
             res["contact_email"] = contact_email
+        if "description" in fields_list:
+            res["description"] = self._default_description(res.get("description"))
         if "chat_link_id" in fields_list and not res.get("chat_link_id"):
             chat_link = self._find_chat_link_from_payload(payload, partner_id)
             if chat_link:
@@ -151,6 +189,73 @@ class EasyBusyCreateOpportunity(models.TransientModel):
                 wizard.customer_action = "exist"
 
     @api.model
+    def _default_description(self, description):
+        messages = self.env.context.get("easy_busy_chat_selected_messages")
+        if messages and isinstance(messages, list):
+            return self._render_chat_messages(messages)
+        if description and not isinstance(description, Markup):
+            # Plain text coming from the chat (e.g. its last message).
+            return plaintext2html(description)
+        return description
+
+    @api.model
+    def _render_chat_messages(self, messages):
+        """Render messages selected in the chat (normalized by the chats
+        client action) as HTML for the opportunity notes."""
+        blocks = []
+        for message in messages:
+            if not isinstance(message, dict):
+                continue
+            author = message.get("author") or (
+                _("Customer") if message.get("is_income") else _("Manager")
+            )
+            header = Markup("<b>%s</b>") % author
+            if message.get("date"):
+                header += Markup(" <small>%s</small>") % message["date"]
+
+            content = Markup()
+            text = (message.get("text") or "").strip()
+            if text:
+                content += plaintext2html(text)
+
+            images = []
+            attachments = []
+            for attachment in message.get("attachments") or []:
+                if not isinstance(attachment, dict):
+                    continue
+                name = attachment.get("name") or _("File")
+                url = attachment.get("url") or ""
+                is_web_url = url.startswith(("http://", "https://"))
+                if is_web_url and attachment.get("kind") == "image":
+                    # URLs are replaced by the opportunity's own copies on confirm.
+                    images.append(
+                        Markup(
+                            '<a href="%s" target="_blank" rel="noopener">'
+                            '<img src="%s" alt="%s" class="img-fluid w-25"/></a>'
+                        ) % (url, url, name)
+                    )
+                elif is_web_url:
+                    attachments.append(
+                        Markup('<a href="%s" target="_blank" rel="noopener">%s</a>') % (url, name)
+                    )
+                else:
+                    attachments.append(Markup("%s") % name)
+            if images:
+                content += Markup("<p>%s</p>") % Markup(" ").join(images)
+            if attachments:
+                content += Markup("<p><i>%s</i> %s</p>") % (
+                    _("Attachments:"),
+                    Markup(", ").join(attachments),
+                )
+
+            blocks.append(Markup("<p>%s</p>%s") % (header, content))
+
+        if not blocks:
+            return False
+        title = Markup("<p><b>%s</b></p>") % _("Chat messages")
+        return title + Markup("").join(blocks)
+
+    @api.model
     def _default_user_id(self):
         partner = self.env.context.get("default_partner_id")
         if partner:
@@ -197,7 +302,112 @@ class EasyBusyCreateOpportunity(models.TransientModel):
             lead = self._action_merge()
         else:
             lead = self._action_convert()
+        self._attach_chat_files(lead)
         return lead.redirect_lead_opportunity_view()
+
+    def _get_chat_files(self):
+        """Files of the selected chat messages, unique by URL."""
+        files = {}
+        for message in self.env.context.get("easy_busy_chat_selected_messages") or []:
+            if not isinstance(message, dict):
+                continue
+            for attachment in message.get("attachments") or []:
+                url = isinstance(attachment, dict) and attachment.get("url")
+                if url and url.startswith(("http://", "https://")) and url not in files:
+                    files[url] = attachment
+        return list(files.values())[:CHAT_FILE_MAX_COUNT]
+
+    @api.model
+    def _download_chat_file(self, url):
+        """Return ``(content, content_type)`` or ``None`` if the file can't be
+        fetched safely. Redirects are followed manually so every hop is checked."""
+        try:
+            for _hop in range(CHAT_FILE_MAX_REDIRECTS + 1):
+                if not _is_public_url(url):
+                    return None
+                with requests.get(
+                    url, timeout=CHAT_FILE_TIMEOUT, stream=True, allow_redirects=False
+                ) as response:
+                    if response.is_redirect:
+                        url = urljoin(url, response.headers.get("Location", ""))
+                        continue
+                    if response.status_code != 200:
+                        return None
+                    if int(response.headers.get("Content-Length") or 0) > CHAT_FILE_MAX_SIZE:
+                        return None
+                    chunks, size = [], 0
+                    for chunk in response.iter_content(chunk_size=64 * 1024):
+                        size += len(chunk)
+                        if size > CHAT_FILE_MAX_SIZE:
+                            return None
+                        chunks.append(chunk)
+                    content_type = (response.headers.get("Content-Type") or "").split(";")[0]
+                    return b"".join(chunks), content_type.strip()
+        except (requests.RequestException, ValueError) as error:
+            _logger.info("easy_busy_chats: failed to download chat file %s: %s", url, error)
+        return None
+
+    @staticmethod
+    def _chat_file_name(attachment, url, mimetype):
+        name = attachment.get("name") or ""
+        if not os.path.splitext(name)[1]:
+            url_name = unquote(os.path.basename(urlparse(url).path))
+            if os.path.splitext(url_name)[1]:
+                name = url_name
+            else:
+                name += mimetypes.guess_extension(mimetype or "") or ""
+        return name or "file"
+
+    def _attach_chat_files(self, lead):
+        """Copy the files of the selected chat messages into ``lead``: post them
+        in the chatter (opened in Odoo's file viewer) and point the notes at the
+        stored copies, since chat file URLs may expire."""
+        files = self._get_chat_files()
+        if not lead or not files:
+            return
+        Attachment = self.env["ir.attachment"].sudo()
+        attachments = Attachment
+        local_urls = {}
+        total_size = 0
+        for attachment in files:
+            url = attachment["url"]
+            downloaded = self._download_chat_file(url)
+            if not downloaded:
+                continue
+            content, content_type = downloaded
+            total_size += len(content)
+            if total_size > CHAT_FILES_MAX_TOTAL_SIZE:
+                break
+            mimetype = attachment.get("mimetype") or content_type or False
+            record = Attachment.create(
+                {
+                    "name": self._chat_file_name(attachment, url, mimetype),
+                    "raw": content,
+                    "mimetype": mimetype,
+                    "res_model": "crm.lead",
+                    "res_id": lead.id,
+                }
+            )
+            attachments |= record
+            route = "image" if (record.mimetype or "").startswith("image/") else "content"
+            local_urls[url] = "/web/%s/%s" % (route, record.id)
+
+        if not attachments:
+            return
+
+        if not is_html_empty(lead.description):
+            description = str(lead.description)
+            for url, local_url in local_urls.items():
+                description = description.replace(str(escape(url)), local_url)
+                description = description.replace(url, local_url)
+            lead.sudo().description = Markup(description)
+
+        lead.sudo().message_post(
+            body=_("Files from the chat"),
+            attachment_ids=attachments.ids,
+            message_type="comment",
+            subtype_xmlid="mail.mt_note",
+        )
 
     def _action_merge(self):
         if len(self.duplicated_lead_ids) < 2:
@@ -217,6 +427,8 @@ class EasyBusyCreateOpportunity(models.TransientModel):
                 }
             )
         (to_merge - result).sudo().unlink()
+        if not is_html_empty(self.description):
+            result.description = (result.description or Markup()) + self.description
         return result
 
     def _action_convert(self):
@@ -273,8 +485,8 @@ class EasyBusyCreateOpportunity(models.TransientModel):
         payload = self.env.context.get("easy_busy_chat_link_payload") or {}
         description = (
             self.description
-            or payload.get("chat_title")
-            or _("Created from EasyBusy chat")
+            if not is_html_empty(self.description)
+            else plaintext2html(payload.get("chat_title") or _("Created from EasyBusy chat"))
         )
         lead_model = self.env["crm.lead"]
         lead_vals = {

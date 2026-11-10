@@ -15,9 +15,15 @@ export class ChatsClientAction extends Component {
     setup() {
         const orm = useService("orm");
         const actionService = useService("action");
+        const notification = useService("notification");
+        // Instance returned by `renderChatsApp` (chats.getSelectedMessages(), …).
+        let chats = null;
+        const intervals = new Set();
         const services = {
             orm,
             action: actionService,
+            notification,
+            getChatsInstance: () => chats,
         };
         const chatCallbacks = getChatCallbacks({ services });
 
@@ -112,6 +118,7 @@ export class ChatsClientAction extends Component {
             const interval = setInterval(() => {
                 if (window.renderChatsApp) {
                     clearInterval(interval);
+                    intervals.delete(interval);
 
                     try {
                         window.localStorage.setItem('token', chatSettings.accessToken);
@@ -119,7 +126,7 @@ export class ChatsClientAction extends Component {
                         console.log(error);
                     }
 
-                    window.renderChatsApp('chat_container_holder', {
+                    chats = window.renderChatsApp('chat_container_holder', {
                         companyId: chatSettings.companyId,
                         accessToken: chatSettings.accessToken,
                         lang: chatSettings.lang,
@@ -137,6 +144,7 @@ export class ChatsClientAction extends Component {
                     }
                 }
             }, 100);
+            intervals.add(interval);
         };
 
         onWillStart(async () => {
@@ -148,6 +156,7 @@ export class ChatsClientAction extends Component {
                     if (!container) return;
 
                     clearInterval(waitInitInterval);
+                    intervals.delete(waitInitInterval);
 
                     if (!processSettingsSetup(chatSettings)) return;
 
@@ -157,6 +166,7 @@ export class ChatsClientAction extends Component {
 
                     document.head.appendChild(script);
                 }, 200);
+                intervals.add(waitInitInterval);
             } else {
                 if (processSettingsSetup(chatSettings)) {
                     initializeChat(chatSettings);
@@ -165,9 +175,16 @@ export class ChatsClientAction extends Component {
         });
 
         onWillDestroy(() => {
-            if (window.unmountChatsApp) {
+            for (const interval of intervals) {
+                clearInterval(interval);
+            }
+            intervals.clear();
+            if (typeof chats?.unmount === "function") {
+                chats.unmount();
+            } else if (window.unmountChatsApp) {
                 window.unmountChatsApp('chat_container_holder');
             }
+            chats = null;
             //document.querySelector('.o_content').classList.remove('chats-active');
         });
     }
