@@ -208,3 +208,38 @@ msgstr ""
 #, python-format
 msgid "Select at least two opportunities to merge."
 msgstr ""
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Manager"
+msgstr ""
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "File"
+msgstr ""
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Attachments:"
+msgstr ""
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Chat messages"
+msgstr ""
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+#, python-format
+msgid "Files from the chat"
+msgstr ""

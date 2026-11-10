@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="easy_busy_chats.ChatConversationDialog">
+        <Dialog size="'xl'" footer="false" withBodyPadding="false"
+                contentClass="'o_easy_busy_chat_conversation_dialog'">
+            <!-- The chat title is already shown by the plugin's header. -->
+            <t t-set-slot="header" t-slot-scope="scope">
+                <div class="d-flex flex-wrap gap-2 me-auto">
+                    <button type="button" class="btn btn-secondary" t-on-click="() => this.openAllChats()">
+                        <i class="fa fa-external-link me-1"/>All Chats
+                    </button>
+                    <button t-if="!hasChat and canStartNewChat" type="button" class="btn btn-primary" t-on-click="() => this.openNewChat()">
+                        <i class="fa fa-plus me-1"/>New Chat
+                    </button>
+                    <button t-if="state.linkId" type="button" class="btn btn-outline-danger" t-on-click="() => this.unlinkChat()">
+                        <i class="fa fa-chain-broken me-1"/>Unlink
+                    </button>
+                </div>
+                <button type="button" class="btn-close" aria-label="Close" t-on-click="() => this.closeDialog()"/>
+            </t>
+            <div class="o_easy_busy_chat_conversation">
+                <div t-if="state.loading" class="o_easy_busy_chat_conversation_status text-muted">Loading...</div>
+                <div t-if="state.error" class="o_easy_busy_chat_conversation_status">
+                    <div class="alert alert-danger mb-0" role="alert" t-esc="state.error"/>
+                </div>
+                <!-- Managed by the chats plugin (React): no OWL content inside. -->
+                <div t-att-id="targetId" t-ref="root" class="o_easy_busy_chat_conversation_root"/>
+            </div>
+        </Dialog>
+    </t>
+
+</templates>

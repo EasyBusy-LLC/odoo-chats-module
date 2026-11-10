@@ -8,13 +8,18 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet/notebook" position="inside">
                 <page string="Chats" name="easy_busy_chats" groups="easy_busy_chats.group_easy_busy_chats_user">
+                    <div class="d-flex justify-content-end mb-2">
+                        <button name="action_easy_busy_new_chat" type="object" string="New Chat" class="btn btn-primary" icon="fa-plus"/>
+                    </div>
                     <field name="easy_busy_chat_link_ids" nolabel="1" context="{'default_partner_id': active_id}" options="{'no_create': True, 'form_view_ref': 'easy_busy_chats.view_easy_busy_chat_link_form'}">
-                        <tree create="0" delete="1" edit="0" class="o_easy_busy_chats_tree">
+                        <tree create="0" delete="0" edit="0" class="o_easy_busy_chats_tree">
                             <field name="provider"/>
                             <field name="chat_title"/>
                             <field name="contact_id" />
                             <field name="contact_user_name"/>
-                            <button name="action_open_chat" type="object" string="Go to Chat" class="btn btn-secondary oe_easy_busy_chat_redirect" icon="fa-external-link"/>
+                            <button name="action_open_chat" type="object" string="Open Chat" class="btn btn-secondary oe_easy_busy_chat_redirect" icon="fa-comments"/>
+                            <button name="action_unlink_from_contact" type="object" string="Unlink" class="btn btn-link text-danger oe_easy_busy_chat_redirect" icon="fa-trash"
+                                    confirm="This chat will no longer be linked to the contact. The chat itself is not deleted."/>
                         </tree>
                     </field>
                 </page>
@@ -47,7 +52,7 @@
                         <field name="redirect_url" invisible="1"/>
                         <label for="redirect_url" class="o_form_label"/>
                         <div class="oe_easy_busy_chat_redirect">
-                            <button name="action_open_chat" type="object" string="Go to Chat" class="btn btn-secondary oe_easy_busy_chat_redirect" icon="fa-external-link"/>
+                            <button name="action_open_chat" type="object" string="Open Chat" class="btn btn-secondary oe_easy_busy_chat_redirect" icon="fa-comments"/>
                         </div>
                     </group>
                 </sheet>

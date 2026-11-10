@@ -447,3 +447,210 @@ msgid ""
 "automatically. The chat then offers 'View Contact' instead of 'Create "
 "Contact'."
 msgstr "Cuando se abre un chat que aún no está vinculado a ningún contacto, se busca un contacto existente con el mismo número de teléfono y el chat se vincula a él automáticamente. El chat ofrece entonces «Ver contacto» en lugar de «Crear contacto»."
+
+#. module: easy_busy_chats
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_easy_busy_chat_link_form
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
+msgid "Open Chat"
+msgstr "Abrir chat"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Opportunities"
+msgstr "Oportunidades"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Unlink Contact"
+msgstr "Desvincular contacto"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Linked contact"
+msgstr "Contacto vinculado"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "No contact linked to this chat"
+msgstr "No hay ningún contacto vinculado a este chat"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Deals (%s)"
+msgstr "Oportunidades (%s)"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Manage Deals"
+msgstr "Gestionar oportunidades"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Opportunity"
+msgstr "Oportunidad"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Create a deal; selected messages are added to its notes."
+msgstr "Crear una oportunidad; los mensajes seleccionados se añaden a sus notas."
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Photo"
+msgstr "Foto"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Video"
+msgstr "Vídeo"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Audio"
+msgstr "Audio"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Document"
+msgstr "Documento"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Sticker"
+msgstr "Sticker"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Call"
+msgstr "Llamada"
+
+#. module: easy_busy_chats
+#. odoo-python
+#: code:addons/easy_busy_chats/models/easy_busy_chats.py:0
+#, python-format
+msgid "You are not allowed to unlink chat contacts."
+msgstr "No tiene permiso para desvincular contactos de chats."
+
+#. module: easy_busy_chats
+#. odoo-python
+#: code:addons/easy_busy_chats/models/easy_busy_chats.py:0
+#, python-format
+msgid "You are not allowed to link chats to contacts."
+msgstr "No tiene permiso para vincular chats a contactos."
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.xml:0
+#, python-format
+msgid "All Chats"
+msgstr "Todos los chats"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chats_plugin.js:0
+#, python-format
+msgid "Failed to load the chats plugin"
+msgstr "No se pudo cargar el plugin de chats"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.js:0
+#, python-format
+msgid "Failed to load the chat"
+msgstr "No se pudo cargar el chat"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.xml:0
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
+#, python-format
+msgid "Unlink"
+msgstr "Desvincular"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.js:0
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
+#, python-format
+msgid "This chat will no longer be linked to the contact. The chat itself is not deleted."
+msgstr "Este chat dejará de estar vinculado al contacto. El chat en sí no se elimina."
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.xml:0
+#: model_terms:ir.ui.view,arch_db:easy_busy_chats.view_partner_form_easy_busy_chats
+#, python-format
+msgid "New Chat"
+msgstr "Nuevo chat"
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.js:0
+#, python-format
+msgid "Chat created and linked to %s."
+msgstr "Chat creado y vinculado a %s."
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.js:0
+#, python-format
+msgid "This chat is already linked to %s, the link was kept."
+msgstr "Este chat ya está vinculado a %s, se ha mantenido el vínculo."
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.js:0
+#, python-format
+msgid "The chat was created but not linked to the contact."
+msgstr "El chat se creó, pero no se vinculó al contacto."
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.js:0
+#, python-format
+msgid "The chat was created, but it can't be opened here. Find it in All Chats."
+msgstr "El chat se creó, pero no se puede abrir aquí. Búsquelo en Todos los chats."
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_conversation_dialog.js:0
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Chat unlinked from the contact."
+msgstr "Chat desvinculado del contacto."
+
+#. module: easy_busy_chats
+#. odoo-javascript
+#: code:addons/easy_busy_chats/static/src/core/web/chat_actions.js:0
+#, python-format
+msgid "Failed to unlink the contact."
+msgstr "No se pudo desvincular el contacto."
