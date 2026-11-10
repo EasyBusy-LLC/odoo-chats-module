@@ -1,6 +1,12 @@
 import logging
+import re
 
 from odoo import api, fields, models
+
+try:
+    import phonenumbers
+except ImportError:  # optional, as in phone_validation
+    phonenumbers = None
 
 _logger = logging.getLogger(__name__)
 
@@ -21,6 +27,64 @@ class ResPartner(models.Model):
         if payload:
             self._create_easy_busy_chat_links_from_payload(partners, payload)
         return partners
+
+    def action_easy_busy_new_chat(self):
+        """Open the conversation dialog to start a new chat with this contact:
+        the chats plugin creates the messenger contact and its chat (account
+        picked by the user), which is then linked to this partner."""
+        self.ensure_one()
+        name = (self.name or "").strip()
+        if self.is_company:
+            first_name, last_name = name, ""
+        else:
+            first_name, _sep, last_name = name.partition(" ")
+        # First number that converts to E.164 (needed by the plugin's "auto"
+        # dialog); otherwise the raw number prefills its manual form.
+        # res.partner.mobile no longer exists as of Odoo 19.
+        numbers = [
+            self[fname] for fname in ("mobile", "phone")
+            if fname in self._fields and self[fname]
+        ]
+        phone = next(
+            (e164 for e164 in map(self._easy_busy_phone_e164, numbers) if e164),
+            re.sub(r"[^\d+]", "", numbers[0]) if numbers else "",
+        )
+
+        preset = {"firstName": first_name, "lastName": last_name.strip()}
+        if phone:
+            preset["phoneNumber"] = phone
+        return {
+            "type": "ir.actions.client",
+            "tag": "easy_busy_chats.open_conversation",
+            "params": {
+                "partner_id": self.id,
+                "contact_preset": preset,
+            },
+        }
+
+    def _easy_busy_phone_e164(self, number):
+        """E.164 form of ``number`` or False. Tries the contact's (or the
+        company's) country first, then reads a number without "+" as
+        international, e.g. 34607062159 -> +34607062159."""
+        self.ensure_one()
+        number = (number or "").strip()
+        if not number or not phonenumbers:
+            return False
+        digits = re.sub(r"\D", "", number)
+        country = self.country_id or self.env.company.country_id
+        candidates = []
+        if country:
+            candidates.append((number, country.code))
+        # "00" is the international prefix: 0034... is +34...
+        candidates.append(("+" + (digits if number.startswith("+") else digits.lstrip("0")), None))
+        for value, region in candidates:
+            try:
+                parsed = phonenumbers.parse(value, region)
+            except phonenumbers.NumberParseException:
+                continue
+            if phonenumbers.is_valid_number(parsed):
+                return phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164)
+        return False
 
     def _create_easy_busy_chat_links_from_payload(self, partners, payload):
         sanitized = self._sanitize_easy_busy_chat_payload(payload)

@@ -208,3 +208,33 @@ msgstr "Менеджер з продажу"
 #, python-format
 msgid "Select at least two opportunities to merge."
 msgstr "Виберіть щонайменше дві угоди для об'єднання."
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "Manager"
+msgstr "Менеджер"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "File"
+msgstr "Файл"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "Attachments:"
+msgstr "Вкладення:"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "Chat messages"
+msgstr "Повідомлення з чату"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "Files from the chat"
+msgstr "Файли з чату"

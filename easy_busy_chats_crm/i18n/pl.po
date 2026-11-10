@@ -208,3 +208,33 @@ msgstr "Sprzedawca"
 #, python-format
 msgid "Select at least two opportunities to merge."
 msgstr "Wybierz co najmniej dwie szanse do połączenia."
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "Manager"
+msgstr "Menedżer"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "File"
+msgstr "Plik"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "Attachments:"
+msgstr "Załączniki:"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "Chat messages"
+msgstr "Wiadomości z czatu"
+
+#. module: easy_busy_chats_crm
+#. odoo-python
+#: code:addons/easy_busy_chats_crm/models/easy_busy_create_opportunity.py:0
+msgid "Files from the chat"
+msgstr "Pliki z czatu"
