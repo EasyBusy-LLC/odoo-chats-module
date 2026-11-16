@@ -48,6 +48,7 @@ class EasyBusyCreateOpportunity(models.TransientModel):
             ("convert", "Convert to opportunity"),
             ("merge", "Merge with existing opportunities"),
         ],
+        default="convert",
         required=True,
         compute="_compute_conversion_action",
         store=True,
@@ -99,9 +100,8 @@ class EasyBusyCreateOpportunity(models.TransientModel):
         for wizard in self:
             if wizard.conversion_action:
                 continue
-            wizard.conversion_action = (
-                "merge" if len(wizard.duplicated_lead_ids) >= 2 else "convert"
-            )
+            # Merging deletes deals, so it is never preselected.
+            wizard.conversion_action = "convert"
 
     @api.model
     def default_get(self, fields_list):
@@ -150,8 +150,6 @@ class EasyBusyCreateOpportunity(models.TransientModel):
                 email=contact_email,
             )
             res["duplicated_lead_ids"] = [(6, 0, duplicated_leads.ids)]
-            if "conversion_action" in fields_list:
-                res["conversion_action"] = "merge" if len(duplicated_leads) >= 2 else "convert"
         return res
 
     @api.model
